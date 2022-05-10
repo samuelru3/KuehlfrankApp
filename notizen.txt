@@ -32,3 +32,9 @@
                         3 of 3
                     </div>
                 </div>
+
+
+
+
+
+Name, MHD, Geöffnet seit Tagen Kathegorie(Milchproduckte, Gemmüse, Obst, Konserven, Teigwaren, Sonstiges)

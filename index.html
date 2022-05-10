@@ -31,7 +31,7 @@
                         :key="lebensmittel.id">
                         <span>
                             <strong>{{ lebensmittel.name }}</strong>:
-                            {{ lebensmittel.typ1}},
+                            {{ lebensmittel.mhd}},
                             {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
                         </span>
                         <span>
@@ -54,9 +54,9 @@
                 </div>
 
                 <div class="form-group bg-light rounded m-2 p-2">
-                    <h3>Typ</h3>
-                    <label for="selectTyp1">Erster Typ</label>
-                    <select class="form-control" id="selectTyp1" v-model="newLebensmittel.typ1">
+                    <!-- <h3>MHD</h3> -->
+                    <label for="selectMHD1">MHD</label>
+                    <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
@@ -134,9 +134,9 @@
                 </div>
 
                 <div class="form-group bg-light rounded m-2 p-2">
-                    <h3>Typ</h3>
-                    <label for="selectTyp1">Erster Typ</label>
-                    <select class="form-control" id="selectTyp1" v-model="updateLebensmittel.typ1">
+                    <h3>MHD</h3>
+                    <label for="selectMHD">MHD</label>
+                    <select class="form-control" id="selectMHD" v-model="updateLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
@@ -270,7 +270,7 @@
                     :key="lebensmittel.id">
                     <span>
                         <strong>{{ lebensmittel.name }}</strong>:
-                        {{ lebensmittel.typ1}},
+                        {{ lebensmittel.mhd}},
                         {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
                     </span>
                     <span>

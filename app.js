@@ -6,7 +6,7 @@ const LebensmittelApp = {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
                 name: 'Pikachu',
-                typ1: 'Wasser',
+                mhd: 'Wasser',
                 typ2: 'Elektro',
                 gender: 'w',
                 donnerblitz: false,
@@ -19,8 +19,8 @@ const LebensmittelApp = {
 
             // --- Liste aller Lebensmittel ---
             lebensmittelList: [
-                { id: 0, name: 'Voltoball', typ1: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-                { id: 1, name: 'Relaxo', typ1: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+                { id: 0, name: 'Voltoball', mhd: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+                { id: 1, name: 'Relaxo', mhd: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
             ],
 
             // --- Variablen zum Sichtbarmachen
@@ -115,7 +115,7 @@ const LebensmittelApp = {
         },
 
         statistikUndListeAnzeigen() {
-            this.display.Statistik = true;
+            this.display.Statistik = false;
             this.display.Liste = true;
             this.display.Formular = false;
             this.display.Update = false;
@@ -134,7 +134,7 @@ const LebensmittelApp = {
             const newLebensmittel = {
                 id: this.nextId,
                 name: this.newLebensmittel.name,
-                typ1: this.newLebensmittel.typ1,
+                mhd: this.newLebensmittel.mhd,
                 typ2: this.newLebensmittel.typ2,
                 gender: this.newLebensmittel.gender,
                 donnerblitz: this.newLebensmittel.donnerblitz,
@@ -180,7 +180,7 @@ const LebensmittelApp = {
             // Daten vom Lebensmittel auf GUI übertragen
             this.updateLebensmittel.id = aktuellesLebensmittel.id;
             this.updateLebensmittel.name = aktuellesLebensmittel.name;
-            this.updateLebensmittel.typ1 = aktuellesLebensmittel.typ1;
+            this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
             this.updateLebensmittel.typ2 = aktuellesLebensmittel.typ2;
             this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
             this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
@@ -202,7 +202,7 @@ const LebensmittelApp = {
             const newLebensmittel = {
                 id: this.updateLebensmittel.id,
                 name: this.updateLebensmittel.name,
-                typ1: this.updateLebensmittel.typ1,
+                mhd: this.updateLebensmittel.mhd,
                 typ2: this.updateLebensmittel.typ2,
                 gender: this.updateLebensmittel.gender,
                 donnerblitz: this.updateLebensmittel.donnerblitz,
@@ -261,8 +261,8 @@ Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
 //         return {
 //             // --- Liste aller Lebensmittel ---
 //             lebensmittelList: [
-//                 { id: 0, name: 'Voltoball', typ1: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-//                 { id: 1, name: 'Relaxo', typ1: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+//                 { id: 0, name: 'Voltoball', mhd: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+//                 { id: 1, name: 'Relaxo', mhd: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
 //             ],
 
 //             // --- Variablen zum Sichtbarmachen
