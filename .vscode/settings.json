@@ -1,4 +1,5 @@
 {
     "git.confirmEmptyCommits": false,
-    "git.useCommitInputAsStashMessage": true
+    "git.useCommitInputAsStashMessage": true,
+    "git.postCommitCommand": "push"
 }
