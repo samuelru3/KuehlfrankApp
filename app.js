@@ -1,10 +1,32 @@
-const KuehlfrankApp = {
+
+
+const LebensmittelApp = {
     data() {
         return {
+            // --- Daten des neuen Lebensmittels --- 
+            newLebensmittel: {
+                name: 'Pikachu',
+                typ1: 'Wasser',
+                typ2: 'Elektro',
+                gender: 'w',
+                donnerblitz: false,
+                voltoball: true,
+                surfer: false
+            },
+
+            // Daten des Lebensmittels, welches upgedated wird
+            updateLebensmittel: {},
+
+            // --- Liste aller Lebensmittel ---
+            lebensmittelList: [
+                { id: 0, name: 'Voltoball', typ1: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+                { id: 1, name: 'Relaxo', typ1: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+            ],
+
             // --- Variablen zum Sichtbarmachen
             display: {
                 Formular: false,
-                Statistik: true,
+                Statistik: false,
                 Liste: true,
                 Update: false
             },
@@ -15,15 +37,272 @@ const KuehlfrankApp = {
     },
 
     computed: {
+        // --- berechnete Datenfelder ---
+        // --- werden zwischengespeichert ---
+        anzahlLebensmittel() {
+            return this.lebensmittelList.length;
+        },
 
+        anzahlMaennlich() {
+            let anzahl = 0;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].gender === 'm') {
+                    anzahl++;
+                }
+            }
+            return anzahl;
+        },
+
+        anzahlWeiblich() {
+            let anzahl = 0;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].gender === 'w') {
+                    anzahl++;
+                }
+            }
+            return anzahl;
+        },
+
+        anteilWeiblichProzent() {
+            const prozentWert = 100 * this.anzahlWeiblich / this.anzahlLebensmittel;
+            const prozentWertGerundet = prozentWert.toFixed(0);
+            return prozentWertGerundet;
+        },
+
+        anzahlDivers() {
+            let anzahl = 0;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].gender === 'd') {
+                    anzahl++;
+                }
+            }
+            return anzahl;
+        },
+
+        nextId() {
+            // maximale Id + 1
+            let maximaleId = -1;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].id > maximaleId) {
+                    maximaleId = this.lebensmittelList[i].id;
+                }
+            }
+            return maximaleId + 1;
+        },
+
+        attackenliste() {
+            let text = '';
+            if (this.donnerblitz) {
+                text += 'Donnerblitz ';
+            }
+            if (this.voltoball) {
+                text += 'Voltoball ';
+            }
+            if (this.surfer) {
+                text += 'Surfer ';
+            }
+            return text;
+        }
     },
 
     methods: {
+        // ### Komponenten anzeigen und verstecken ###
+        formularAnzeigen() {
+            this.display.Statistik = false;
+            this.display.Liste = false;
+            this.display.Formular = true;
+            this.display.Update = false;
+        },
 
+        statistikUndListeAnzeigen() {
+            this.display.Statistik = true;
+            this.display.Liste = true;
+            this.display.Formular = false;
+            this.display.Update = false;
+        },
+
+        updateAnzeigen() {
+            this.display.Statistik = false;
+            this.display.Liste = false;
+            this.display.Formular = false;
+            this.display.Update = true;
+        },
+
+        // ### Handler für Buttons ###
+        buttonHinzufuegen() {
+            // neues Lebensmittel erzeugen
+            const newLebensmittel = {
+                id: this.nextId,
+                name: this.newLebensmittel.name,
+                typ1: this.newLebensmittel.typ1,
+                typ2: this.newLebensmittel.typ2,
+                gender: this.newLebensmittel.gender,
+                donnerblitz: this.newLebensmittel.donnerblitz,
+                voltoball: this.newLebensmittel.voltoball,
+                surfer: this.newLebensmittel.surfer,
+                attacken: this.newLebensmittel.attackenliste // FEHLER!
+            };
+
+            // neues Lebensmittel an Liste anhängen
+            this.lebensmittelList.push(newLebensmittel);
+
+            // Statistik und Liste anzeigen
+            this.statistikUndListeAnzeigen();
+
+            // Daten persistent speichern
+            this.speichern();
+        },
+
+        buttonLoeschen(id) {
+            // Lebensmittel mit der id von Liste enfernen
+            let index = -1;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].id === id) {
+                    index = i;
+                }
+            }
+            this.lebensmittelList.splice(index, 1);
+
+            // Daten persistent speichern
+            this.speichern();
+        },
+
+        buttonUpdate(id) {
+            // Daten des Lebensmittel mit id holen
+            let index = -1;
+            for (let i = 0; i < this.lebensmittelList.length; i++) {
+                if (this.lebensmittelList[i].id === id) {
+                    index = i;
+                }
+            }
+            let aktuellesLebensmittel = this.lebensmittelList[index];
+
+            // Daten vom Lebensmittel auf GUI übertragen
+            this.updateLebensmittel.id = aktuellesLebensmittel.id;
+            this.updateLebensmittel.name = aktuellesLebensmittel.name;
+            this.updateLebensmittel.typ1 = aktuellesLebensmittel.typ1;
+            this.updateLebensmittel.typ2 = aktuellesLebensmittel.typ2;
+            this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
+            this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
+            this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
+            this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
+
+            this.aktuellerIndex = index;
+
+            // GUI anzeigen
+            this.updateAnzeigen();
+        },
+
+        buttonAenderungenSpeichern(index) {
+            // neues Lebensmittel erzeugen als Kopie
+            const newLebensmittel = Object.assign({}, this.updateLebensmittel);
+
+            /*
+            Umständlicher Quellcode zum Erzeugen einer Kopie
+            const newLebensmittel = {
+                id: this.updateLebensmittel.id,
+                name: this.updateLebensmittel.name,
+                typ1: this.updateLebensmittel.typ1,
+                typ2: this.updateLebensmittel.typ2,
+                gender: this.updateLebensmittel.gender,
+                donnerblitz: this.updateLebensmittel.donnerblitz,
+                voltoball: this.updateLebensmittel.voltoball,
+                surfer: this.updateLebensmittel.surfer,
+                attacken: this.updateLebensmittel.attackenliste
+            };
+            */
+
+            // altes Lebensmittel durch neues ersetzen
+            this.lebensmittelList[index] = newLebensmittel;
+
+            // Statistik und Liste anzeigen
+            this.statistikUndListeAnzeigen();
+
+            // Daten persistent speichern
+            this.speichern();
+        },
+
+        buttonCancel() {
+            // GUI anzeigen
+            this.statistikUndListeAnzeigen();
+        },
+
+        // ### Persistenz: localStorage ###
+        speichern() {
+            // Komplettes Array mit Lebensmittel im 'localStorage' speichern
+            const text = JSON.stringify(this.lebensmittelList);
+            localStorage.setItem('lebensmittelliste', text);
+        },
+
+        laden() {
+            // Daten aus 'localStorage' laden
+            if (localStorage.getItem('lebensmittelliste')) {
+                let dataString = localStorage.getItem('lebensmittelliste');
+                this.lebensmittelList = JSON.parse(dataString);
+            } else {
+                this.lebensmittelList = [];
+            }
+        }
     },
 
     mounted() {
+        // Persistent gespeicherte Daten laden
         this.laden();
     }
-}
-Vue.createApp(KuehlfrankApp).mount('#kuehlfrank-app');
+};
+Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
+
+
+
+
+
+// const KuehlfrankApp = {
+//     data() {
+//         return {
+//             // --- Liste aller Lebensmittel ---
+//             lebensmittelList: [
+//                 { id: 0, name: 'Voltoball', typ1: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+//                 { id: 1, name: 'Relaxo', typ1: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+//             ],
+
+//             // --- Variablen zum Sichtbarmachen
+//             display: {
+//                 Formular: false,
+//                 Statistik: false,
+//                 Liste: true,
+//                 Update: false
+//             },
+
+//             // --- für Update
+//             aktuellerIndex: -1
+//         }
+//     },
+
+//     computed: {
+
+//     },
+
+//     methods: {
+//         // ### Persistenz: localStorage ###
+//         speichern() {
+//             // Komplettes Array mit Lebensmittel im 'localStorage' speichern
+//             const text = JSON.stringify(this.lebensmittelList);
+//             localStorage.setItem('lebensmittelliste', text);
+//         },
+
+//         laden() {
+//             // Daten aus 'localStorage' laden
+//             if (localStorage.getItem('lebensmittelliste')) {
+//                 let dataString = localStorage.getItem('lebensmittelliste');
+//                 this.lebensmittelList = JSON.parse(dataString);
+//             } else {
+//                 this.lebensmittelList = [];
+//             }
+//         }
+//     },
+
+//     mounted() {
+//         this.laden();
+//     }
+// }
+// Vue.createApp(KuehlfrankApp).mount('#kuehlfrank-app');

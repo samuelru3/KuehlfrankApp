@@ -3,6 +3,226 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Kühlfrank-App</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div id="kuehlfrank-app" class="container bg-success p-2">
+            <!-- Header -->
+            <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
+
+            <!-- Statistik -->
+            <div v-if="display.Statistik" class="bg-light rounded m-2 p-2">
+                <h2>Statistik</h2>
+                <p>Anzahl der Lebensmittel: {{ anzahlLebensmittel }}</p>
+                <p>Anzahl der männlichen Lebensmittel: {{ anzahlMaennlich }}</p>
+                <p>Anzahl der weiblichen Lebensmittel: {{ anzahlWeiblich }} ({{ anteilWeiblichProzent }}%)</p>
+                <p>Anzahl der diversen Lebensmittel: {{ anzahlDivers }}</p>
+            </div>
+
+            <!-- Liste aller Lebensmittel -->
+            <div v-if="display.Liste" class="bg-light rounded m-2 p-2">
+                <h2>Liste aller Lebensmittel</h2>
+                <ul class="list-group m-2">
+                    <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList"
+                        :key="lebensmittel.id">
+                        <span>
+                            <strong>{{ lebensmittel.name }}</strong>:
+                            {{ lebensmittel.typ1}},
+                            {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
+                        </span>
+                        <span>
+                            <button class="btn btn-secondary mr-2"
+                                @click="buttonUpdate(lebensmittel.id)">update</button>
+                            <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">-</button></span>
+                    </li>
+                    <!-- Button Neu-->
+                    <li class="list-group-item"><button @click="formularAnzeigen"
+                            class="btn btn-block btn-success">+</button></li>
+                </ul>
+            </div>
+
+            <!-- Formular neues Lebensmittel -->
+            <div v-if="display.Formular" class="bg-light rounded m-2 p-2">
+                <h2>Neues lebensmittel eintragen</h2>
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Name</h3>
+                    <input class="form-control" type="text" v-model="newLebensmittel.name">
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Typ</h3>
+                    <label for="selectTyp1">Erster Typ</label>
+                    <select class="form-control" id="selectTyp1" v-model="newLebensmittel.typ1">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+
+                    <label for="selectTyp2">Zweiter Typ</label>
+                    <select class="form-control" id="selectTyp2" v-model="newLebensmittel.typ2">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Geschlecht</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderM"
+                            v-model="newLebensmittel.gender" value="m">
+                        <label class="form-check-label" for="radioGenderM">m</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderW"
+                            v-model="newLebensmittel.gender" value="w">
+                        <label class="form-check-label" for="radioGenderW">w</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderD"
+                            v-model="newLebensmittel.gender" value="d">
+                        <label class="form-check-label" for="radioGenderD">d</label>
+                    </div>
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Attacken</h3>
+                    <div class="form-check">
+                        <input v-model="newLebensmittel.donnerblitz" class="form-check-input" type="checkbox"
+                            id="checkDonnerblitz">
+                        <label class="form-check-label" for="checkDonnerblitz">
+                            Donnerblitz
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input v-model="newLebensmittel.voltoball" class="form-check-input" type="checkbox"
+                            id="checkVoltoball">
+                        <label class="form-check-label" for="checkVoltoball">
+                            Voltoball
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input v-model="newLebensmittel.surfer" class="form-check-input" type="checkbox"
+                            id="checkSurfer">
+                        <label class="form-check-label" for="checkSurfer">
+                            Surfer
+                        </label>
+                    </div>
+                </div>
+
+                <div class="m-2">
+                    <button class="btn btn-block btn-primary" @click="buttonHinzufuegen">Hinzufügen</button>
+                </div>
+            </div>
+
+            <!-- Formular update Lebensmittel -->
+            <div v-if="display.Update" class="bg-light rounded m-2 p-2">
+                <h2>Vorhandenes Lebensmittel ändern</h2>
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Name</h3>
+                    <input class="form-control" type="text" v-model="updateLebensmittel.name">
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Typ</h3>
+                    <label for="selectTyp1">Erster Typ</label>
+                    <select class="form-control" id="selectTyp1" v-model="updateLebensmittel.typ1">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+
+                    <label for="selectTyp2">Zweiter Typ</label>
+                    <select class="form-control" id="selectTyp2" v-model="updateLebensmittel.typ2">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Geschlecht</h3>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderM"
+                            v-model="updateLebensmittel.gender" value="m">
+                        <label class="form-check-label" for="radioGenderM">m</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderW"
+                            v-model="updateLebensmittel.gender" value="w">
+                        <label class="form-check-label" for="radioGenderW">w</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderD"
+                            v-model="updateLebensmittel.gender" value="d">
+                        <label class="form-check-label" for="radioGenderD">d</label>
+                    </div>
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Attacken</h3>
+                    <div class="form-check">
+                        <input v-model="updateLebensmittel.donnerblitz" class="form-check-input" type="checkbox"
+                            id="checkDonnerblitz">
+                        <label class="form-check-label" for="checkDonnerblitz">
+                            Donnerblitz
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input v-model="updateLebensmittel.voltoball" class="form-check-input" type="checkbox"
+                            id="checkVoltoball">
+                        <label class="form-check-label" for="checkVoltoball">
+                            Voltoball
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input v-model="updateLebensmittel.surfer" class="form-check-input" type="checkbox"
+                            id="checkSurfer">
+                        <label class="form-check-label" for="checkSurfer">
+                            Surfer
+                        </label>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end m-2">
+                    <button class="btn btn-warning mr-2" @click="buttonCancel">Abbrechen</button>
+                    <button class="btn btn-primary" @click="buttonAenderungenSpeichern(this.aktuellerIndex)">Änderungen
+                        speichern</button>
+                </div>
+            </div>
+
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script src="app.js"></script>
+    </body>
+
+</html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Kühlfrank-App</title>
@@ -32,45 +252,46 @@
 
     <body>
 
-        <!-- <div class="container-fluid p-5 bg-primary text-white text-uppercase">
+         <div class="container-fluid p-5 bg-primary text-white text-uppercase">
             <h1>My First Bootstrap Page</h1>
-            <p>Resize this responsive page to see the effect!</p> -->
-        </div>
-        <div id="kuehlfrank-app" class="container-fluid p-2" style="background-color: rgb(21, 139, 21)">
+            <p>Resize this responsive page to see the effect!</p> 
+</div>
+<div id="kuehlfrank-app" class="container-fluid p-2" style="background-color: rgb(21, 139, 21)">
 
-            <!-- Header -->
-            <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
+    Header
+    <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
 
-            <div class="container" style="padding: 10px;">
+    <div class="container" style="padding: 10px;">
 
-                <div v-if="display.Liste" class="bg-light rounded m-2 p-2">
-                    <h2>Liste aller Pokemons</h2>
-                    <ul class="list-group m-2">
-                        <li class="list-group-item d-flex justify-content-between" v-for="pokemon in pokemonList"
-                            :key="pokemon.id">
-                            <span>
-                                <strong>{{ pokemon.name }}</strong>:
-                                {{ pokemon.typ1}},
-                                {{ pokemon.typ2}} ({{ pokemon.gender }}), {{ pokemon.attacken }}
-                            </span>
-                            <span>
-                                <button class="btn btn-secondary mr-2" @click="buttonUpdate(pokemon.id)">update</button>
-                                <button class="btn btn-danger" @click="buttonLoeschen(pokemon.id)">-</button></span>
-                        </li>
-                        <!-- Button Neu-->
-                        <li class="list-group-item"><button @click="formularAnzeigen"
-                                class="btn btn-block btn-success">+</button></li>
-                    </ul>
-                </div>
-
-            </div>
-
+        <div v-if="display.Liste" class="bg-light rounded m-2 p-2">
+            <h2>Liste aller Lebensmittel</h2>
+            <ul class="list-group m-2">
+                <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList"
+                    :key="lebensmittel.id">
+                    <span>
+                        <strong>{{ lebensmittel.name }}</strong>:
+                        {{ lebensmittel.typ1}},
+                        {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
+                    </span>
+                    <span>
+                        <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">update</button>
+                        <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">-</button></span>
+                </li>
+                Button Neu
+                <li class="list-group-item"><button @click="formularAnzeigen"
+                        class="btn btn-block btn-success">+</button>
+                </li>
+            </ul>
         </div>
 
+    </div>
+
+</div>
 
 
-        <script src="https://unpkg.com/vue@next"></script>
-        <script src="app.js"></script>
-    </body>
 
-</html>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="app.js"></script>
+</body>
+
+</html> -->
