@@ -1,0 +1,34 @@
+// Buttons Oben
+
+<div class="row justify-content-md-center">
+                    <div class="col-md-auto" style="margin: 3px; color: white;">
+                        <button type="button" class="btn btn-primary">Home</button>
+                        <!-- <img class="static" src="lagerhaus.png"><img class="active" src="lagerhaus.gif"> -->
+                    </div>
+
+                    <div class="col" style="margin: 3px;">
+                        <!-- Platzhalter -->
+                    </div>
+                    <div class="col-md-auto" style="margin: 3px;">
+                        <button type="button" class="btn btn-primary">Einstellungen</button>
+                    </div>
+                </div>
+
+
+
+//Leiste Unten
+
+<div class="row justify-content-md-center" style="position: absolute; bottom: 0px;">
+                    <div class="col-md-auto bg-info " style="margin: 3px;">
+                        1 of 3
+                    </div>
+                    <div class="col-md-auto bg-dark" style="margin: 3px;">
+                        1 of 3
+                    </div>
+                    <div class="col bg-primary" style="margin: 3px;">
+                        Variable width content
+                    </div>
+                    <div class="col-md-auto bg-success" style="margin: 3px;">
+                        3 of 3
+                    </div>
+                </div>
