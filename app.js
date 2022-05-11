@@ -14,8 +14,9 @@ const LebensmittelApp = {
 
             // --- Daten des neuen Namens --- 
             newName: {
-                name: 's',
-                kategorie: 's',
+                kategorie: 'Milchprodukte',
+                name: '',
+
             },
 
 
@@ -24,15 +25,10 @@ const LebensmittelApp = {
             updateLebensmittel: {},
 
             // --- Liste aller Lebensmittel ---
-            lebensmittelList: [
-                { id: 0, name: 'Voltoball', mhd: 'Elektro', geoeffnetSeit: 'Wasser', kategorie: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-                { id: 1, name: 'Relaxo', mhd: 'Normal', geoeffnetSeit: 'Normal', kategorie: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
-            ],
+            lebensmittelList: [],
 
             // --- Liste aller Lebensmittel ---
-            namenList: [
-                { id: 0, name: 'Milch', kategorie: 'Milchprodukte' }
-            ],
+            namenList: [],
 
             // --- Variablen zum Sichtbarmachen
             display: {
@@ -42,13 +38,13 @@ const LebensmittelApp = {
                 Update: false,
                 NeuerName: true,
             },
-
             // --- für Update
             aktuellerIndex: -1
         }
     },
 
     computed: {
+
         // --- berechnete Datenfelder ---
         // --- werden zwischengespeichert ---
         anzahlLebensmittel() {
@@ -147,6 +143,7 @@ const LebensmittelApp = {
         },
 
         updateAnzeigen() {
+            console.info('sdgdsg');
             this.display.Statistik = false;
             this.display.Liste = false;
             this.display.Formular = false;
@@ -189,22 +186,25 @@ const LebensmittelApp = {
         },
 
         buttonNameHinzufuegen() {
+            console.log('Button Name Hinzufügen');
+            this.namenLaden();
             // neuen Namen Hinzufügen
             const newName = {
                 id: this.nextIdName,
                 name: this.newName.name,
                 kategorie: this.newName.kategorie,
             };
-
+            console.log('srg');
             // neues Lebensmittel an Liste anhängen
-            this.lebensmittelList.push(newName);
+            this.namenList.push(newName);
+            console.log(newName);
+
 
             // Statistik und Liste anzeigen
-            this.statistikUndListeAnzeigen();
+            this.formularAnzeigen();
 
             // Daten persistent speichern
-            this.speichern();
-            console.log(this.lebensmittelList);
+            this.namenSpeichern();
 
         },
 
@@ -289,34 +289,39 @@ const LebensmittelApp = {
             // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
             const text = JSON.stringify(this.lebensmittelList);
             localStorage.setItem('lebensmittelliste', text);
-            this.namenSpeichern();
         },
 
         //NAME Persistenz: localStorage ###
         namenSpeichern() {
             // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
             const text = JSON.stringify(this.namenList);
-            localStorage.setItem('NamensListe', text);
+            localStorage.setItem('namenList', text);
         },
 
         laden() {
             // Daten aus 'localStorage' laden
-            if (localStorage.getItem('lebensmittelliste')) {
+            if (localStorage.getItem('lebensmittelliste') || false) {
                 let dataString = localStorage.getItem('lebensmittelliste');
                 this.lebensmittelList = JSON.parse(dataString);
             } else {
-                this.lebensmittelList = [];
+                console.log('Lebensmittelliste nicht vorhanden -> wird neu erstellt');
+                var lebensmittelList = [];
+                this.speichern();
+                console.log(lebensmittelList + 'Fertig');
             }
 
         },
 
         namenLaden() {
             // Daten aus 'localStorage' laden
-            if (localStorage.getItem('NamensLioste')) {
-                let dataString = localStorage.getItem('NamensListe');
+            if (localStorage.getItem('namenList')) {
+                let dataString = localStorage.getItem('namenList');
                 this.namenList = JSON.parse(dataString);
             } else {
-                this.namenList = [];
+                console.log('Namenslliste nicht vorhanden -> wird neu erstellt');
+                var namenList = [];
+                this.namenSpeichern();
+                console.log(namenList + 'Fertig');
             }
         }
     },
@@ -324,61 +329,7 @@ const LebensmittelApp = {
     mounted() {
         // Persistent gespeicherte Daten laden
         this.laden();
+        this.namenLaden();
     }
 };
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
-
-
-
-
-
-// const KuehlfrankApp = {
-//     data() {
-//         return {
-//             // --- Liste aller Lebensmittel ---
-//             lebensmittelList: [
-//                 { id: 0, name: 'Voltoball', mhd: 'Elektro', geoeffnetSeit: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-//                 { id: 1, name: 'Relaxo', mhd: 'Normal', geoeffnetSeit: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
-//             ],
-
-//             // --- Variablen zum Sichtbarmachen
-//             display: {
-//                 Formular: false,
-//                 Statistik: false,
-//                 Liste: true,
-//                 Update: false
-//             },
-
-//             // --- für Update
-//             aktuellerIndex: -1
-//         }
-//     },
-
-//     computed: {
-
-//     },
-
-//     methods: {
-//         // ### Persistenz: localStorage ###
-//         speichern() {
-//             // Komplettes Array mit Lebensmittel im 'localStorage' speichern
-//             const text = JSON.stringify(this.lebensmittelList);
-//             localStorage.setItem('lebensmittelliste', text);
-//         },
-
-//         laden() {
-//             // Daten aus 'localStorage' laden
-//             if (localStorage.getItem('lebensmittelliste')) {
-//                 let dataString = localStorage.getItem('lebensmittelliste');
-//                 this.lebensmittelList = JSON.parse(dataString);
-//             } else {
-//                 this.lebensmittelList = [];
-//             }
-//         }
-//     },
-
-//     mounted() {
-//         this.laden();
-//     }
-// }
-// Vue.createApp(KuehlfrankApp).mount('#kuehlfrank-app');

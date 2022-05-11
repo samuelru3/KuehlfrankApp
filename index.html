@@ -14,6 +14,7 @@
 
 
 
+
             <!-- Header -->
             <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
 
@@ -43,7 +44,8 @@
                         </span>
                         <span>
                             <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
-                                <ion-icon name="pencil-outline"></ion-icon>
+                                edit
+                                <!-- <ion-icon name="pencil-outline"></ion-icon> -->
                             </button>
                             <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
                     </li>
@@ -131,7 +133,7 @@
                 <!-- Kategorie -->
                 <div class="form-group bg-light rounded m-2 p-2">
                     <label for="selectKategorie">Kategorie:</label>
-                    <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
+                    <select class="form-control" id="selectNameKategorie" v-model="newName.kategorie">
                         <option>Milchprodukte</option>
                         <option>Konserven</option>
                         <option>Gemüse</option>
@@ -143,14 +145,14 @@
 
                     <!-- Name -->
                     <div class="form-group bg-light rounded">
-                        <input class="form-control" type="text" v-model="updateLebensmittel.name">
+                        <input class="form-control" type="text" v-model="newName.name">
                     </div>
                 </div>
 
 
                 <!-- Hinzufügen-Butoon -->
                 <div class="m-2">
-                    <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
+                    <button class="btn btn-block btn-success" @click="buttonNameHinzufuegen">
                         <!-- <img src="plus-circle.svg" alt="+"> -->
                         <!-- <ion-icon name="add-circle-outline" style="size: 200px;"></ion-icon> -->
                         <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
