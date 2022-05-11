@@ -42,8 +42,9 @@
                             {{ lebensmittel.geoeffnetSeit}} {{ lebensmittel.kategorie}}
                         </span>
                         <span>
-                            <button class="btn btn-secondary mr-2"
-                                @click="buttonUpdate(lebensmittel.id)">update</button>
+                            <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
+                                <ion-icon name="pencil-outline"></ion-icon>
+                            </button>
                             <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
                     </li>
                     <!-- Button Neu-->
