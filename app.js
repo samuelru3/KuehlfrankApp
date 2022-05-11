@@ -39,7 +39,8 @@ const LebensmittelApp = {
                 Formular: true,
                 Statistik: false,
                 Liste: false,
-                Update: false
+                Update: false,
+                NeuerName: true,
             },
 
             // --- für Update
@@ -134,6 +135,7 @@ const LebensmittelApp = {
             this.display.Liste = false;
             this.display.Formular = true;
             this.display.Update = false;
+            this.display.NeuerName = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -141,6 +143,7 @@ const LebensmittelApp = {
             this.display.Liste = true;
             this.display.Formular = false;
             this.display.Update = false;
+            this.display.NeuerName = false;
         },
 
         updateAnzeigen() {
@@ -148,6 +151,15 @@ const LebensmittelApp = {
             this.display.Liste = false;
             this.display.Formular = false;
             this.display.Update = true;
+            this.display.NeuerName = false;
+        },
+
+        nameHinzufuegenAnzeigen() {
+            this.display.Statistik = false;
+            this.display.Liste = false;
+            this.display.Formular = false;
+            this.display.Update = true;
+            this.display.NeuerName = false;
         },
 
         // ### Handler für Buttons ###
@@ -177,21 +189,22 @@ const LebensmittelApp = {
         },
 
         buttonNameHinzufuegen() {
-            // neues Produkt erzeugen
-            const newName = {
-                id: this.nextIdName,
-                name: this.newName.name,
-                kategorie: this.newName.kategorie,
-            };
+            // GUI anzeigen
+            this.updateAnzeigen();
+            // Daten vom Lebensmittel auf GUI übertragen
+            this.updateLebensmittel.id = aktuellesLebensmittel.id;
+            this.updateLebensmittel.name = aktuellesLebensmittel.name;
+            this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
+            this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
+            this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
+            this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
+            this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
+            this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
+            this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
 
-            // neues Lebensmittel an Liste anhängen
-            this.namenList.push(newName);
+            this.aktuellerIndex = index;
 
-            // Statistik und Liste anzeigen
-            this.statistikUndListeAnzeigen();
 
-            // Daten persistent speichern
-            this.speichern();
         },
 
         buttonLoeschen(id) {

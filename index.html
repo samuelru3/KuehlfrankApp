@@ -85,7 +85,7 @@
                         </select>
 
                         <!-- Neuer Lebensmittel Name -->
-                        <button class="btn btn-success" @click="buttonHinzufuegen">
+                        <button class="btn btn-success" @click="buttonNameHinzufuegen">
                             +
                         </button>
                     </div>
@@ -114,50 +114,7 @@
                 </div>
 
 
-                <!-- <div class="form-group bg-light rounded m-2 p-2">
-                    <h3>Geschlecht</h3>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderM"
-                            v-model="newLebensmittel.gender" value="m">
-                        <label class="form-check-label" for="radioGenderM">m</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderW"
-                            v-model="newLebensmittel.gender" value="w">
-                        <label class="form-check-label" for="radioGenderW">w</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="radioGender" id="radioGenderD"
-                            v-model="newLebensmittel.gender" value="d">
-                        <label class="form-check-label" for="radioGenderD">d</label>
-                    </div>
-                </div>
-
-                <div class="form-group bg-light rounded m-2 p-2">
-                    <h3>Attacken</h3>
-                    <div class="form-check">
-                        <input v-model="newLebensmittel.donnerblitz" class="form-check-input" type="checkbox"
-                            id="checkDonnerblitz">
-                        <label class="form-check-label" for="checkDonnerblitz">
-                            Donnerblitz
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input v-model="newLebensmittel.voltoball" class="form-check-input" type="checkbox"
-                            id="checkVoltoball">
-                        <label class="form-check-label" for="checkVoltoball">
-                            Voltoball
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input v-model="newLebensmittel.surfer" class="form-check-input" type="checkbox"
-                            id="checkSurfer">
-                        <label class="form-check-label" for="checkSurfer">
-                            Surfer
-                        </label>
-                    </div>
-                </div> -->
-
+                <!-- Hinzufügen-Butoon -->
                 <div class="m-2">
                     <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
                         <!-- <img src="plus-circle.svg" alt="+"> -->
@@ -168,7 +125,75 @@
                 </div>
             </div>
 
+            <!-- Formular neuer Name -->
+            <div v-if="display.NeuerName" class="bg-light rounded m-2 p-2">
+                <h2>Neues Lebensmittel eintragen:</h2>
 
+                <!-- Kategorie -->
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <label for="selectKategorie" style="font-weight: bold;">Kategorie:</label>
+                    <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
+                        <option>Milchprodukte</option>
+                        <option>Konserven</option>
+                        <option>Gemüse</option>
+                        <option>Obst</option>
+                        <option>Teigwaren</option>
+                        <option>Sonstiges</option>
+                    </select>
+
+
+                    <!-- Name -->
+                    <label for="selectName" style="font-weight: bold;">Name:</label>
+                    <div class="input-group mb-3">
+                        <select class="form-control" id="selectKategorie" v-model="newLebensmittel.name">
+                            <option>Milchprodukte</option>
+                            <option>Konserven</option>
+                            <option>Gemüse</option>
+                            <option>Obst</option>
+                            <option>Teigwaren</option>
+                            <option>Sonstiges</option>
+                        </select>
+
+                        <!-- Neuer Lebensmittel Name -->
+                        <button class="btn btn-success" @click="buttonNameHinzufuegen">
+                            +
+                        </button>
+                    </div>
+
+
+                    <!-- MHD -->
+                    <label for="selectMHD1">MHD:</label>
+                    <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+
+                    <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
+                    <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+                </div>
+
+
+                <!-- Hinzufügen-Butoon -->
+                <div class="m-2">
+                    <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
+                        <!-- <img src="plus-circle.svg" alt="+"> -->
+                        <!-- <ion-icon name="add-circle-outline" style="size: 200px;"></ion-icon> -->
+                        <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
+                        Hinzufügen
+                    </button>
+                </div>
+            </div>
 
             <!-- Formular update Lebensmittel -->
             <div v-if="display.Update" class="bg-light rounded m-2 p-2">
