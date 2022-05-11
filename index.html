@@ -72,7 +72,6 @@
                         <option>Sonstiges</option>
                     </select>
 
-
                     <!-- Name -->
                     <label for="selectName" style="font-weight: bold;">Name:</label>
                     <div class="input-group mb-3">
@@ -91,27 +90,28 @@
                         </button>
                     </div>
 
-
                     <!-- MHD -->
                     <label for="selectMHD1">MHD:</label>
-                    <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
+                    <input class="form-control" type="date" name="mhd" required pattern="\d{4}-\d{2}-\d{2}">
+                    <!-- <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
                         <option>Elektro</option>
                         <option>Pflanze</option>
                         <option>Eis</option>
-                    </select>
+                    </select> -->
 
                     <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
-                    <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
+                    <input class="form-control" type="date" name="geoeffnetSeit" required pattern="\d{4}-\d{2}-\d{2}">
+                    <!-- <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
                         <option>Elektro</option>
                         <option>Pflanze</option>
                         <option>Eis</option>
-                    </select>
+                    </select> -->
                 </div>
 
 
