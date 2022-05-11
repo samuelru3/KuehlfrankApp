@@ -5,14 +5,10 @@ const LebensmittelApp = {
         return {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
-                name: 'Pikachu',
-                mhd: 'Wasser',
-                geoeffnetSeit: 'Elektro',
-                kategorie: 'Wasser',
-                gender: 'w',
-                donnerblitz: false,
-                voltoball: true,
-                surfer: false
+                name: '',
+                mhd: '',
+                geoeffnetSeit: '',
+                kategorie: '',
             },
 
             // --- Daten des neuen Namens --- 
