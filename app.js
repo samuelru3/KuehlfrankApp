@@ -7,7 +7,8 @@ const LebensmittelApp = {
             newLebensmittel: {
                 name: 'Pikachu',
                 mhd: 'Wasser',
-                typ2: 'Elektro',
+                geoeffnetSeit: 'Elektro',
+                kategorie: 'Wasser',
                 gender: 'w',
                 donnerblitz: false,
                 voltoball: true,
@@ -19,8 +20,8 @@ const LebensmittelApp = {
 
             // --- Liste aller Lebensmittel ---
             lebensmittelList: [
-                { id: 0, name: 'Voltoball', mhd: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-                { id: 1, name: 'Relaxo', mhd: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+                { id: 0, name: 'Voltoball', mhd: 'Elektro', geoeffnetSeit: 'Wasser', kategorie: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+                { id: 1, name: 'Relaxo', mhd: 'Normal', geoeffnetSeit: 'Normal', kategorie: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
             ],
 
             // --- Variablen zum Sichtbarmachen
@@ -135,7 +136,8 @@ const LebensmittelApp = {
                 id: this.nextId,
                 name: this.newLebensmittel.name,
                 mhd: this.newLebensmittel.mhd,
-                typ2: this.newLebensmittel.typ2,
+                geoeffnetSeit: this.newLebensmittel.geoeffnetSeit,
+                kategorie: this.newLebensmittel.kategorie,
                 gender: this.newLebensmittel.gender,
                 donnerblitz: this.newLebensmittel.donnerblitz,
                 voltoball: this.newLebensmittel.voltoball,
@@ -181,7 +183,8 @@ const LebensmittelApp = {
             this.updateLebensmittel.id = aktuellesLebensmittel.id;
             this.updateLebensmittel.name = aktuellesLebensmittel.name;
             this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
-            this.updateLebensmittel.typ2 = aktuellesLebensmittel.typ2;
+            this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
+            this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
             this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
             this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
             this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
@@ -203,7 +206,8 @@ const LebensmittelApp = {
                 id: this.updateLebensmittel.id,
                 name: this.updateLebensmittel.name,
                 mhd: this.updateLebensmittel.mhd,
-                typ2: this.updateLebensmittel.typ2,
+                geoeffnetSeit: this.updateLebensmittel.geoeffnetSeit,
+                kategorie: this.updateLebensmittel.kategorie,
                 gender: this.updateLebensmittel.gender,
                 donnerblitz: this.updateLebensmittel.donnerblitz,
                 voltoball: this.updateLebensmittel.voltoball,
@@ -261,8 +265,8 @@ Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
 //         return {
 //             // --- Liste aller Lebensmittel ---
 //             lebensmittelList: [
-//                 { id: 0, name: 'Voltoball', mhd: 'Elektro', typ2: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
-//                 { id: 1, name: 'Relaxo', mhd: 'Normal', typ2: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+//                 { id: 0, name: 'Voltoball', mhd: 'Elektro', geoeffnetSeit: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
+//                 { id: 1, name: 'Relaxo', mhd: 'Normal', geoeffnetSeit: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
 //             ],
 
 //             // --- Variablen zum Sichtbarmachen

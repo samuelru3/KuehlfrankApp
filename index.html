@@ -32,12 +32,12 @@
                         <span>
                             <strong>{{ lebensmittel.name }}</strong>:
                             {{ lebensmittel.mhd}},
-                            {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
+                            {{ lebensmittel.geoeffnetSeit}} {{ lebensmittel.kategorie}}
                         </span>
                         <span>
                             <button class="btn btn-secondary mr-2"
                                 @click="buttonUpdate(lebensmittel.id)">update</button>
-                            <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">-</button></span>
+                            <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
                     </li>
                     <!-- Button Neu-->
                     <li class="list-group-item"><button @click="formularAnzeigen"
@@ -47,15 +47,13 @@
 
             <!-- Formular neues Lebensmittel -->
             <div v-if="display.Formular" class="bg-light rounded m-2 p-2">
-                <h2>Neues lebensmittel eintragen</h2>
+                <h2>Neues Lebensmittel eintragen:</h2>
                 <div class="form-group bg-light rounded m-2 p-2">
                     <h3>Name</h3>
                     <input class="form-control" type="text" v-model="newLebensmittel.name">
-                </div>
 
-                <div class="form-group bg-light rounded m-2 p-2">
                     <!-- <h3>MHD</h3> -->
-                    <label for="selectMHD1">MHD</label>
+                    <label for="selectMHD1">MHD:</label>
                     <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
@@ -65,8 +63,18 @@
                         <option>Eis</option>
                     </select>
 
-                    <label for="selectTyp2">Zweiter Typ</label>
-                    <select class="form-control" id="selectTyp2" v-model="newLebensmittel.typ2">
+                    <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
+                    <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+
+                    <label for="selectKategorie">Kategorie:</label>
+                    <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
@@ -76,7 +84,8 @@
                     </select>
                 </div>
 
-                <div class="form-group bg-light rounded m-2 p-2">
+
+                <!-- <div class="form-group bg-light rounded m-2 p-2">
                     <h3>Geschlecht</h3>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="radioGender" id="radioGenderM"
@@ -118,10 +127,10 @@
                             Surfer
                         </label>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="m-2">
-                    <button class="btn btn-block btn-primary" @click="buttonHinzufuegen">Hinzufügen</button>
+                    <button class="btn btn-block btn-success" @click="buttonHinzufuegen">Hinzufügen</button>
                 </div>
             </div>
 
@@ -135,7 +144,7 @@
 
                 <div class="form-group bg-light rounded m-2 p-2">
                     <h3>MHD</h3>
-                    <label for="selectMHD">MHD</label>
+                    <label for="selectMHD">MHD:</label>
                     <select class="form-control" id="selectMHD" v-model="updateLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
@@ -144,9 +153,24 @@
                         <option>Pflanze</option>
                         <option>Eis</option>
                     </select>
+                    <select class="selectpicker">
+                        <option>Mustard</option>
+                        <option>Ketchup</option>
+                        <option>Relish</option>
+                    </select>
 
-                    <label for="selectTyp2">Zweiter Typ</label>
-                    <select class="form-control" id="selectTyp2" v-model="updateLebensmittel.typ2">
+                    <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
+                    <select class="form-control" id="selectGeoeffnetSeit" v-model="updateLebensmittel.geoeffnetSeit">
+                        <option>Feuer</option>
+                        <option>Normal</option>
+                        <option>Wasser</option>
+                        <option>Elektro</option>
+                        <option>Pflanze</option>
+                        <option>Eis</option>
+                    </select>
+
+                    <label for="selectKategorie">Geöffnet seit:</label>
+                    <select class="form-control" id="selectKategorie" v-model="updateLebensmittel.kategorie">
                         <option>Feuer</option>
                         <option>Normal</option>
                         <option>Wasser</option>
@@ -155,7 +179,12 @@
                         <option>Eis</option>
                     </select>
                 </div>
-
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
                 <div class="form-group bg-light rounded m-2 p-2">
                     <h3>Geschlecht</h3>
                     <div class="form-check form-check-inline">
@@ -271,7 +300,7 @@
                     <span>
                         <strong>{{ lebensmittel.name }}</strong>:
                         {{ lebensmittel.mhd}},
-                        {{ lebensmittel.typ2}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
+                        {{ lebensmittel.geoeffnetSeit}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
                     </span>
                     <span>
                         <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">update</button>
