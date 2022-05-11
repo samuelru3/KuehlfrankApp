@@ -92,7 +92,8 @@
 
                     <!-- MHD -->
                     <label for="selectMHD1">MHD:</label>
-                    <input class="form-control" type="date" name="mhd" required pattern="\d{4}-\d{2}-\d{2}">
+                    <input class="form-control" type="date" name="mhd" id="selectMHD" v-model="newLebensmittel.mhd"
+                        required pattern="\d{4}-\d{2}-\d{2}">
                     <!-- <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
                         <option>Feuer</option>
                         <option>Normal</option>
@@ -103,7 +104,8 @@
                     </select> -->
 
                     <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
-                    <input class="form-control" type="date" name="geoeffnetSeit" required pattern="\d{4}-\d{2}-\d{2}">
+                    <input class="form-control" type="date" name="geoeffnetSeit" id="selectGeoeffnetSeit"
+                        v-model="newLebensmittel.geoeffnetSeit" required pattern="\d{4}-\d{2}-\d{2}">
                     <!-- <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
                         <option>Feuer</option>
                         <option>Normal</option>
