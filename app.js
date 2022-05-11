@@ -26,9 +26,9 @@ const LebensmittelApp = {
 
             // --- Variablen zum Sichtbarmachen
             display: {
-                Formular: false,
+                Formular: true,
                 Statistik: false,
-                Liste: true,
+                Liste: false,
                 Update: false
             },
 
