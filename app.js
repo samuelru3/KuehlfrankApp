@@ -158,8 +158,8 @@ const LebensmittelApp = {
             this.display.Statistik = false;
             this.display.Liste = false;
             this.display.Formular = false;
-            this.display.Update = true;
-            this.display.NeuerName = false;
+            this.display.Update = false;
+            this.display.NeuerName = true;
         },
 
         // ### Handler für Buttons ###
@@ -189,21 +189,22 @@ const LebensmittelApp = {
         },
 
         buttonNameHinzufuegen() {
-            // GUI anzeigen
-            this.updateAnzeigen();
-            // Daten vom Lebensmittel auf GUI übertragen
-            this.updateLebensmittel.id = aktuellesLebensmittel.id;
-            this.updateLebensmittel.name = aktuellesLebensmittel.name;
-            this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
-            this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
-            this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
-            this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
-            this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
-            this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
-            this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
+            // neuen Namen Hinzufügen
+            const newName = {
+                id: this.nextIdName,
+                name: this.newName.name,
+                kategorie: this.newName.kategorie,
+            };
 
-            this.aktuellerIndex = index;
+            // neues Lebensmittel an Liste anhängen
+            this.lebensmittelList.push(newName);
 
+            // Statistik und Liste anzeigen
+            this.statistikUndListeAnzeigen();
+
+            // Daten persistent speichern
+            this.speichern();
+            console.log(this.lebensmittelList);
 
         },
 
@@ -278,20 +279,6 @@ const LebensmittelApp = {
             this.speichern();
         },
 
-        buttonAenderungenSpeichernName(index) {
-            // neues Name erzeugen als Kopie
-            const newName = Object.assign({}, this.updateName);
-
-            // altes Name durch neues ersetzen
-            this.namenList[index] = newName;
-
-            // Statistik und Liste anzeigen
-            this.statistikUndListeAnzeigen();
-
-            // Daten persistent speichern
-            this.speichern();
-        },
-
         buttonCancel() {
             // GUI anzeigen
             this.statistikUndListeAnzeigen();
@@ -305,7 +292,7 @@ const LebensmittelApp = {
             this.namenSpeichern();
         },
 
-        // ### Persistenz: localStorage ###
+        //NAME Persistenz: localStorage ###
         namenSpeichern() {
             // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
             const text = JSON.stringify(this.namenList);
@@ -320,7 +307,7 @@ const LebensmittelApp = {
             } else {
                 this.lebensmittelList = [];
             }
-            this.namenLaden();
+
         },
 
         namenLaden() {

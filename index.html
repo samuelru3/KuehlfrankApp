@@ -47,12 +47,11 @@
                             </button>
                             <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
                     </li>
-                    <!-- Button Neu-->
+                    <!-- Button Neues Lebensmittel Eintragen-->
                     <li class="list-group-item"><button @click="formularAnzeigen" class="btn btn-block btn-success">+
                             Neues Lebensmittel</button></li>
                 </ul>
             </div>
-
 
 
             <!-- Formular neues Lebensmittel -->
@@ -85,7 +84,7 @@
                         </select>
 
                         <!-- Neuer Lebensmittel Name -->
-                        <button class="btn btn-success" @click="buttonNameHinzufuegen">
+                        <button class="btn btn-success" @click="nameHinzufuegenAnzeigen">
                             +
                         </button>
                     </div>
@@ -127,11 +126,11 @@
 
             <!-- Formular neuer Name -->
             <div v-if="display.NeuerName" class="bg-light rounded m-2 p-2">
-                <h2>Neues Lebensmittel eintragen:</h2>
+                <h2>Neues Produkt Hinzufügen:</h2>
 
                 <!-- Kategorie -->
                 <div class="form-group bg-light rounded m-2 p-2">
-                    <label for="selectKategorie" style="font-weight: bold;">Kategorie:</label>
+                    <label for="selectKategorie">Kategorie:</label>
                     <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
                         <option>Milchprodukte</option>
                         <option>Konserven</option>
@@ -140,47 +139,12 @@
                         <option>Teigwaren</option>
                         <option>Sonstiges</option>
                     </select>
-
+                    <label for="selectKategorie">Name:</label>
 
                     <!-- Name -->
-                    <label for="selectName" style="font-weight: bold;">Name:</label>
-                    <div class="input-group mb-3">
-                        <select class="form-control" id="selectKategorie" v-model="newLebensmittel.name">
-                            <option>Milchprodukte</option>
-                            <option>Konserven</option>
-                            <option>Gemüse</option>
-                            <option>Obst</option>
-                            <option>Teigwaren</option>
-                            <option>Sonstiges</option>
-                        </select>
-
-                        <!-- Neuer Lebensmittel Name -->
-                        <button class="btn btn-success" @click="buttonNameHinzufuegen">
-                            +
-                        </button>
+                    <div class="form-group bg-light rounded">
+                        <input class="form-control" type="text" v-model="updateLebensmittel.name">
                     </div>
-
-
-                    <!-- MHD -->
-                    <label for="selectMHD1">MHD:</label>
-                    <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
-                        <option>Feuer</option>
-                        <option>Normal</option>
-                        <option>Wasser</option>
-                        <option>Elektro</option>
-                        <option>Pflanze</option>
-                        <option>Eis</option>
-                    </select>
-
-                    <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
-                    <select class="form-control" id="selectGeoeffnetSeit" v-model="newLebensmittel.geoeffnetSeit">
-                        <option>Feuer</option>
-                        <option>Normal</option>
-                        <option>Wasser</option>
-                        <option>Elektro</option>
-                        <option>Pflanze</option>
-                        <option>Eis</option>
-                    </select>
                 </div>
 
 
