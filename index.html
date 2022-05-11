@@ -71,9 +71,18 @@
                         <option>Sonstiges</option>
                     </select>
 
+
+                    <!-- Name -->
                     <label for="selectName" style="font-weight: bold;">Name:</label>
                     <div class="input-group mb-3">
-                        <input class="form-control" type="text" v-model="newLebensmittel.name">
+                        <select class="form-control" id="selectKategorie" v-model="newLebensmittel.name">
+                            <option>Milchprodukte</option>
+                            <option>Konserven</option>
+                            <option>Gemüse</option>
+                            <option>Obst</option>
+                            <option>Teigwaren</option>
+                            <option>Sonstiges</option>
+                        </select>
 
                         <!-- Neuer Lebensmittel Name -->
                         <button class="btn btn-success" @click="buttonHinzufuegen">
@@ -82,8 +91,7 @@
                     </div>
 
 
-
-                    <!-- <h3>MHD</h3> -->
+                    <!-- MHD -->
                     <label for="selectMHD1">MHD:</label>
                     <select class="form-control" id="selectMHD" v-model="newLebensmittel.mhd">
                         <option>Feuer</option>
