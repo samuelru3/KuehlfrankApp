@@ -40,14 +40,16 @@
                             <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
                     </li>
                     <!-- Button Neu-->
-                    <li class="list-group-item"><button @click="formularAnzeigen"
-                            class="btn btn-block btn-success">+</button></li>
+                    <li class="list-group-item"><button @click="formularAnzeigen" class="btn btn-block btn-success">+
+                            Neues Lebensmittel</button></li>
                 </ul>
             </div>
 
             <!-- Formular neues Lebensmittel -->
             <div v-if="display.Formular" class="bg-light rounded m-2 p-2">
                 <h2>Neues Lebensmittel eintragen:</h2>
+
+
                 <div class="form-group bg-light rounded m-2 p-2">
                     <label for="selectKategorie" style="font-weight: bold;">Kategorie:</label>
                     <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
@@ -130,7 +132,12 @@
                 </div> -->
 
                 <div class="m-2">
-                    <button class="btn btn-block btn-success" @click="buttonHinzufuegen">Hinzufügen</button>
+                    <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
+                        <!-- <img src="plus-circle.svg" alt="+"> -->
+                        <!-- <ion-icon name="add-circle-outline" style="size: 200px;"></ion-icon> -->
+                        <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
+                        Hinzufügen
+                    </button>
                 </div>
             </div>
 
@@ -227,8 +234,10 @@
             </div>
 
         </div>
+
         <script src="https://unpkg.com/vue@next"></script>
         <script src="app.js"></script>
+        <script src="https://unpkg.com/ionicons@6.0.1/dist/ionicons.js"></script>
     </body>
 
 </html>

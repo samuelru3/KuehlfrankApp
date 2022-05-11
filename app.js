@@ -15,6 +15,14 @@ const LebensmittelApp = {
                 surfer: false
             },
 
+            // --- Daten des neuen Namens --- 
+            newName: {
+                name: 's',
+                kategorie: 's',
+            },
+
+
+
             // Daten des Lebensmittels, welches upgedated wird
             updateLebensmittel: {},
 
@@ -22,6 +30,11 @@ const LebensmittelApp = {
             lebensmittelList: [
                 { id: 0, name: 'Voltoball', mhd: 'Elektro', geoeffnetSeit: 'Wasser', kategorie: 'Wasser', gender: 'd', donnerblitz: true, voltoball: true, surfer: false, attacken: 'Donnerblitz, Voltoball' },
                 { id: 1, name: 'Relaxo', mhd: 'Normal', geoeffnetSeit: 'Normal', kategorie: 'Normal', gender: 'm', donnerblitz: false, voltoball: false, surfer: true, attacken: 'Surfer' }
+            ],
+
+            // --- Liste aller Lebensmittel ---
+            namenList: [
+                { id: 0, name: 'Milch', kategorie: 'Milchprodukte' }
             ],
 
             // --- Variablen zum Sichtbarmachen
@@ -91,6 +104,17 @@ const LebensmittelApp = {
             return maximaleId + 1;
         },
 
+        nextIdName() {
+            // maximale Id + 1
+            let maximaleId = -1;
+            for (let i = 0; i < this.namenList.length; i++) {
+                if (this.namenList[i].id > maximaleId) {
+                    maximaleId = this.namenList[i].id;
+                }
+            }
+            return maximaleId + 1;
+        },
+
         attackenliste() {
             let text = '';
             if (this.donnerblitz) {
@@ -147,6 +171,24 @@ const LebensmittelApp = {
 
             // neues Lebensmittel an Liste anhängen
             this.lebensmittelList.push(newLebensmittel);
+
+            // Statistik und Liste anzeigen
+            this.statistikUndListeAnzeigen();
+
+            // Daten persistent speichern
+            this.speichern();
+        },
+
+        buttonNameHinzufuegen() {
+            // neues Produkt erzeugen
+            const newName = {
+                id: this.nextIdName,
+                name: this.newName.name,
+                kategorie: this.newName.kategorie,
+            };
+
+            // neues Lebensmittel an Liste anhängen
+            this.namenList.push(newName);
 
             // Statistik und Liste anzeigen
             this.statistikUndListeAnzeigen();
@@ -226,6 +268,20 @@ const LebensmittelApp = {
             this.speichern();
         },
 
+        buttonAenderungenSpeichernName(index) {
+            // neues Name erzeugen als Kopie
+            const newName = Object.assign({}, this.updateName);
+
+            // altes Name durch neues ersetzen
+            this.namenList[index] = newName;
+
+            // Statistik und Liste anzeigen
+            this.statistikUndListeAnzeigen();
+
+            // Daten persistent speichern
+            this.speichern();
+        },
+
         buttonCancel() {
             // GUI anzeigen
             this.statistikUndListeAnzeigen();
@@ -233,9 +289,17 @@ const LebensmittelApp = {
 
         // ### Persistenz: localStorage ###
         speichern() {
-            // Komplettes Array mit Lebensmittel im 'localStorage' speichern
+            // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
             const text = JSON.stringify(this.lebensmittelList);
             localStorage.setItem('lebensmittelliste', text);
+            this.namenSpeichern();
+        },
+
+        // ### Persistenz: localStorage ###
+        namenSpeichern() {
+            // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
+            const text = JSON.stringify(this.namenList);
+            localStorage.setItem('NamensListe', text);
         },
 
         laden() {
@@ -245,6 +309,17 @@ const LebensmittelApp = {
                 this.lebensmittelList = JSON.parse(dataString);
             } else {
                 this.lebensmittelList = [];
+            }
+            this.namenLaden();
+        },
+
+        namenLaden() {
+            // Daten aus 'localStorage' laden
+            if (localStorage.getItem('NamensLioste')) {
+                let dataString = localStorage.getItem('NamensListe');
+                this.namenList = JSON.parse(dataString);
+            } else {
+                this.namenList = [];
             }
         }
     },
