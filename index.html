@@ -58,7 +58,7 @@
             <div v-if="display.Formular" class="bg-light rounded m-2 p-2">
                 <h2>Neues Lebensmittel eintragen:</h2>
 
-
+                <!-- Kategorie -->
                 <div class="form-group bg-light rounded m-2 p-2">
                     <label for="selectKategorie" style="font-weight: bold;">Kategorie:</label>
                     <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
@@ -73,6 +73,8 @@
                     <label for="selectName" style="font-weight: bold;">Name:</label>
                     <div class="input-group mb-3">
                         <input class="form-control" type="text" v-model="newLebensmittel.name">
+
+                        <!-- Neuer Lebensmittel Name -->
                         <button class="btn btn-success" @click="buttonHinzufuegen">
                             +
                         </button>

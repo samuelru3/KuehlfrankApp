@@ -5,10 +5,11 @@ const LebensmittelApp = {
         return {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
+                kategorie: 'Milchprodukte',
                 name: '',
                 mhd: '',
                 geoeffnetSeit: '',
-                kategorie: '',
+
             },
 
             // --- Daten des neuen Namens --- 
