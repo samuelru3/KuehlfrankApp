@@ -39,7 +39,7 @@ const LebensmittelApp = {
             display: {
                 Formular: false,
                 Statistik: false,
-                // Standart (true):
+                // Liste ist Standart (true):
                 Liste: true,
                 Update: false,
                 UpdateVonName: false,
