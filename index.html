@@ -125,12 +125,10 @@
             <div v-if="display.ListeNamen" class="bg-light rounded m-2 p-2">
                 <h2>Liste aller Namen</h2>
                 <ul class="list-group m-2">
-                    <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList"
-                        :key="lebensmittel.id">
+                    <li class="list-group-item d-flex justify-content-between" v-for="name in namenList">
                         <span>
-                            <strong>{{ lebensmittel.name }}</strong>:
-                            {{ lebensmittel.mhd}},
-                            {{ lebensmittel.geoeffnetSeit}} {{ lebensmittel.kategorie}}
+                            <strong>{{ name.name }}</strong> ({{ name.kategorie }})
+
                         </span>
                         <span>
                             <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
