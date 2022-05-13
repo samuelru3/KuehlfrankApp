@@ -34,11 +34,12 @@ const LebensmittelApp = {
             // --- Variablen zum Sichtbarmachen
             // Startbildsachirm
             display: {
-                Formular: true,
+                Formular: false,
                 Statistik: false,
                 Liste: false,
                 Update: false,
                 NeuerName: false,
+                ListeNamen: true,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -134,6 +135,7 @@ const LebensmittelApp = {
             this.display.Formular = true;
             this.display.Update = false;
             this.display.NeuerName = false;
+            this.display.ListeNamen = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -142,15 +144,25 @@ const LebensmittelApp = {
             this.display.Formular = false;
             this.display.Update = false;
             this.display.NeuerName = false;
+            this.display.ListeNamen = false;
         },
 
         updateAnzeigen() {
-            console.info('sdgdsg');
             this.display.Statistik = false;
             this.display.Liste = false;
             this.display.Formular = false;
             this.display.Update = true;
             this.display.NeuerName = false;
+            this.display.ListeNamen = false;
+        },
+
+        namenListeAnzeigen() {
+            this.display.Statistik = false;
+            this.display.Liste = false;
+            this.display.Formular = false;
+            this.display.Update = false;
+            this.display.NeuerName = false;
+            this.display.ListeNamen = true;
         },
 
         nameHinzufuegenAnzeigen() {
@@ -159,6 +171,7 @@ const LebensmittelApp = {
             this.display.Formular = false;
             this.display.Update = false;
             this.display.NeuerName = true;
+            this.display.ListeNamen = false;
         },
 
         // ### Handler für Buttons ###
@@ -260,22 +273,6 @@ const LebensmittelApp = {
         buttonAenderungenSpeichern(index) {
             // neues Lebensmittel erzeugen als Kopie
             const newLebensmittel = Object.assign({}, this.updateLebensmittel);
-
-            /*
-            Umständlicher Quellcode zum Erzeugen einer Kopie
-            const newLebensmittel = {
-                id: this.updateLebensmittel.id,
-                name: this.updateLebensmittel.name,
-                mhd: this.updateLebensmittel.mhd,
-                geoeffnetSeit: this.updateLebensmittel.geoeffnetSeit,
-                kategorie: this.updateLebensmittel.kategorie,
-                gender: this.updateLebensmittel.gender,
-                donnerblitz: this.updateLebensmittel.donnerblitz,
-                voltoball: this.updateLebensmittel.voltoball,
-                surfer: this.updateLebensmittel.surfer,
-                attacken: this.updateLebensmittel.attackenliste
-            };
-            */
 
             // altes Lebensmittel durch neues ersetzen
             this.lebensmittelList[index] = newLebensmittel;
