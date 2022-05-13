@@ -63,7 +63,7 @@
                 <!-- Kategorie -->
                 <div class="form-group bg-light rounded m-2 p-2">
                     <label for="selectKategorie" style="font-weight: bold;">Kategorie:</label>
-                    <select class="form-control" id="selectKategorie" v-model="newLebensmittel.kategorie">
+                    <select class="form-control" id="selectKategorie">
                         <option>Milchprodukte</option>
                         <option>Konserven</option>
                         <option>Gemüse</option>
@@ -76,12 +76,7 @@
                     <label for="selectName" style="font-weight: bold;">Name:</label>
                     <div class="input-group mb-3">
                         <select class="form-control" id="selectKategorie" v-model="newLebensmittel.name">
-                            <option>Milchprodukte</option>
-                            <option>Konserven</option>
-                            <option>Gemüse</option>
-                            <option>Obst</option>
-                            <option>Teigwaren</option>
-                            <option>Sonstiges</option>
+                            <option v-for="name in namenList" :key="name.id">{{ name.name }}</option>
                         </select>
 
                         <!-- Neuer Lebensmittel Name -->
@@ -153,12 +148,15 @@
 
 
                 <!-- Hinzufügen-Butoon -->
-                <div class="m-2">
-                    <button class="btn btn-block btn-success" @click="buttonNameHinzufuegen">
+                <div class="p-2 m-2 row">
+                    <button class="btn col btn-success" style="margin-right: 5px;" @click="buttonNameHinzufuegen">
                         <!-- <img src="plus-circle.svg" alt="+"> -->
                         <!-- <ion-icon name="add-circle-outline" style="size: 200px;"></ion-icon> -->
                         <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
                         Hinzufügen
+                    </button>
+                    <button class="btn btn-dark" @click="buttonNameAbbrechen">
+                        abbrechen
                     </button>
                 </div>
             </div>

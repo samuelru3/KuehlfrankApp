@@ -31,12 +31,13 @@ const LebensmittelApp = {
             namenList: [],
 
             // --- Variablen zum Sichtbarmachen
+            // Startbildsachirm
             display: {
                 Formular: true,
                 Statistik: false,
                 Liste: false,
                 Update: false,
-                NeuerName: true,
+                NeuerName: false,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -206,6 +207,12 @@ const LebensmittelApp = {
             // Daten persistent speichern
             this.namenSpeichern();
 
+        },
+
+        buttonNameAbbrechen() {
+            console.log('Button Name Abbrechen');
+            // Statistik und Liste anzeigen
+            this.formularAnzeigen();
         },
 
         buttonLoeschen(id) {
