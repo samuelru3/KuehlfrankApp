@@ -12,6 +12,7 @@
     ]
   },
   "hosting": {
+    "site": "kuelfrank",
     "public": "public",
     "ignore": [
       "firebase.json",
