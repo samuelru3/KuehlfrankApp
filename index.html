@@ -131,11 +131,12 @@
 
                         </span>
                         <span>
-                            <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
+                            <button class="btn btn-secondary mr-2" @click="buttonNameUpdate(name.id)">
                                 edit
                                 <!-- <ion-icon name="pencil-outline"></ion-icon> -->
                             </button>
-                            <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
+                            <button class="btn btn-danger" @click="">x</button></span>
+                        <!-- buttonLoeschen(lebensmittel.id) -->
                     </li>
                     <!-- Button Neues Lebensmittel Eintragen-->
                     <li class="list-group-item"><button @click="formularAnzeigen" class="btn btn-block btn-success">+
@@ -270,6 +271,34 @@
                 <div class="d-flex justify-content-end m-2">
                     <button class="btn btn-warning mr-2" @click="buttonCancel">Abbrechen</button>
                     <button class="btn btn-primary" @click="buttonAenderungenSpeichern(this.aktuellerIndex)">Änderungen
+                        speichern</button>
+                </div>
+            </div>
+
+            <!-- Formular update Name -->
+            <div v-if="display.UpdateVonName" class="bg-light rounded m-2 p-2">
+                <h2>Vorhandenen Name ändern</h2>
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <h3>Name</h3>
+                    <input class="form-control" type="text" v-model="updateName.name">
+                </div>
+
+                <div class="form-group bg-light rounded m-2 p-2">
+                    <label for="selectKategorie">Kategorie:</label>
+                    <select class="form-control" id="selectKategorie" v-model="updateName.kategorie">
+                        <option>Milchprodukte</option>
+                        <option>Konserven</option>
+                        <option>Gemüse</option>
+                        <option>Obst</option>
+                        <option>Teigwaren</option>
+                        <option>Sonstiges</option>
+                    </select>
+                </div>
+
+                <div class="d-flex justify-content-end m-2">
+                    <button class="btn btn-warning mr-2" @click="buttonNameCancel">Abbrechen</button>
+                    <button class="btn btn-primary"
+                        @click="buttonNamenAenderungenSpeichern(this.aktuellerIndex)">Änderungen
                         speichern</button>
                 </div>
             </div>

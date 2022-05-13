@@ -25,6 +25,9 @@ const LebensmittelApp = {
             // Daten des Lebensmittels, welches upgedated wird
             updateLebensmittel: {},
 
+            // Daten des Lebensmittels, welches upgedated wird
+            updateName: {},
+
             // --- Liste aller Lebensmittel ---
             lebensmittelList: [],
 
@@ -36,10 +39,13 @@ const LebensmittelApp = {
             display: {
                 Formular: false,
                 Statistik: false,
-                Liste: false,
+                // Standart (true):
+                Liste: true,
+                // 
                 Update: false,
+                UpdateVonName: false,
                 NeuerName: false,
-                ListeNamen: true,
+                ListeNamen: false,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -136,6 +142,7 @@ const LebensmittelApp = {
             this.display.Update = false;
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
+            this.display.UpdateVonName = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -145,6 +152,7 @@ const LebensmittelApp = {
             this.display.Update = false;
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
+            this.display.UpdateVonName = false;
         },
 
         updateAnzeigen() {
@@ -154,6 +162,7 @@ const LebensmittelApp = {
             this.display.Update = true;
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
+            this.display.UpdateVonName = false;
         },
 
         namenListeAnzeigen() {
@@ -163,6 +172,7 @@ const LebensmittelApp = {
             this.display.Update = false;
             this.display.NeuerName = false;
             this.display.ListeNamen = true;
+            this.display.UpdateVonName = false;
         },
 
         nameHinzufuegenAnzeigen() {
@@ -172,6 +182,17 @@ const LebensmittelApp = {
             this.display.Update = false;
             this.display.NeuerName = true;
             this.display.ListeNamen = false;
+            this.display.UpdateVonName = false;
+        },
+
+        updateNameAnzeigen() {
+            this.display.Statistik = false;
+            this.display.Liste = false;
+            this.display.Formular = false;
+            this.display.Update = false;
+            this.display.NeuerName = false;
+            this.display.ListeNamen = false;
+            this.display.UpdateVonName = true;
         },
 
         // ### Handler für Buttons ###
@@ -270,6 +291,30 @@ const LebensmittelApp = {
             this.updateAnzeigen();
         },
 
+        buttonNameUpdate(id) {
+            // Daten des Namens mit id holen
+            let index = -1;
+            for (let i = 0; i < this.namenList.length; i++) {
+                console.log(this.namenList.length);
+                if (this.namenList[i].id === id) {
+                    index = i;
+                }
+            }
+            console.log('1');
+            let aktuellerName = this.namenList[index];
+            console.log('2');
+
+            // Daten vom Namen auf GUI übertragen
+            this.updateName.id = aktuellerName.id;
+            console.log('3');
+            this.updateName.name = aktuellerName.name;
+            this.updateName.kategorie = aktuellerName.kategorie;
+            this.aktuellerIndex = index;
+
+            // GUI anzeigen
+            this.updateNameAnzeigen();
+        },
+
         buttonAenderungenSpeichern(index) {
             // neues Lebensmittel erzeugen als Kopie
             const newLebensmittel = Object.assign({}, this.updateLebensmittel);
@@ -284,9 +329,29 @@ const LebensmittelApp = {
             this.speichern();
         },
 
+        buttonNamenAenderungenSpeichern(index) {
+            // neuer Name erzeugen als Kopie
+            const newName = Object.assign({}, this.updateName);
+
+            // alter Name durch neuen ersetzen
+            this.namenList[index] = newName;
+
+            // Statistik und Liste anzeigen
+            this.namenListeAnzeigen();
+
+            // Daten persistent speichern
+            this.namenSpeichern();
+        },
+
+
         buttonCancel() {
             // GUI anzeigen
             this.statistikUndListeAnzeigen();
+        },
+
+        buttonNameCancel() {
+            // GUI anzeigen
+            this.namenListeAnzeigen();
         },
 
         // ### Persistenz: localStorage ###
