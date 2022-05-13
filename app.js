@@ -41,7 +41,6 @@ const LebensmittelApp = {
                 Statistik: false,
                 // Standart (true):
                 Liste: true,
-                // 
                 Update: false,
                 UpdateVonName: false,
                 NeuerName: false,
