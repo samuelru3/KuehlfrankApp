@@ -7,6 +7,12 @@
         <title>Kühlfrank-App</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
             integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <style>
+            #app {
+                max-width: 30em;
+                margin: 1em auto;
+            }
+        </style>
     </head>
 
     <body>
@@ -76,9 +82,10 @@
                     <label for="selectName" style="font-weight: bold;">Name:</label>
                     <div class="input-group mb-3">
                         <select class="form-control" id="selectKategorie" v-model="newLebensmittel.name">
-                            <option v-for="name in namenList" :key="name.id">{{ name.name }}</option>
+                            <!-- <optgroup v-for="name in namenList" :key="name.id" label={{ name.kategorie }}></optgroup> -->
+                            <option v-for="name in namenList" v-if="true">
+                                {{ name.name }}</option>
                         </select>
-
                         <!-- Neuer Lebensmittel Name -->
                         <button class="btn btn-success" @click="nameHinzufuegenAnzeigen">
                             +
@@ -254,92 +261,12 @@
             </div>
 
         </div>
-
         <script src="https://unpkg.com/vue@next"></script>
         <script src="app.js"></script>
         <script src="https://unpkg.com/ionicons@6.0.1/dist/ionicons.js"></script>
+
+        <script src="https://unpkg.com/vue@2"></script>
+        <script src="https://unpkg.com/vue-select@latest"></script>
     </body>
 
 </html>
-
-
-
-
-<!-- 
-<!DOCTYPE html>
-<html lang="de">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Kühlfrank-App</title>
-        <style>
-            .static {
-                position: absolute;
-                background: white;
-                height: 60px
-            }
-
-            .static:hover {
-                opacity: 0;
-            }
-
-            .active {
-                height: 60px
-            }
-
-            :root {
-                --bs-success: #198754;
-                --bs-success-rgb: 25, 135, 84;
-            }
-        </style>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    </head>
-
-    <body>
-
-         <div class="container-fluid p-5 bg-primary text-white text-uppercase">
-            <h1>My First Bootstrap Page</h1>
-            <p>Resize this responsive page to see the effect!</p> 
-</div>
-<div id="kuehlfrank-app" class="container-fluid p-2" style="background-color: rgb(21, 139, 21)">
-
-    Header
-    <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
-
-    <div class="container" style="padding: 10px;">
-
-        <div v-if="display.Liste" class="bg-light rounded m-2 p-2">
-            <h2>Liste aller Lebensmittel</h2>
-            <ul class="list-group m-2">
-                <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList"
-                    :key="lebensmittel.id">
-                    <span>
-                        <strong>{{ lebensmittel.name }}</strong>:
-                        {{ lebensmittel.mhd}},
-                        {{ lebensmittel.geoeffnetSeit}} ({{ lebensmittel.gender }}), {{ lebensmittel.attacken }}
-                    </span>
-                    <span>
-                        <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">update</button>
-                        <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">-</button></span>
-                </li>
-                Button Neu
-                <li class="list-group-item"><button @click="formularAnzeigen"
-                        class="btn btn-block btn-success">+</button>
-                </li>
-            </ul>
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<script src="https://unpkg.com/vue@next"></script>
-<script src="app.js"></script>
-</body>
-
-</html> -->

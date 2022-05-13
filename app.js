@@ -1,6 +1,7 @@
-
+// Vue.component('v-select', VueSelect.VueSelect);
 
 const LebensmittelApp = {
+
     data() {
         return {
             // --- Daten des neuen Lebensmittels --- 
@@ -337,6 +338,6 @@ const LebensmittelApp = {
         // Persistent gespeicherte Daten laden
         this.laden();
         this.namenLaden();
-    }
+    },
 };
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
