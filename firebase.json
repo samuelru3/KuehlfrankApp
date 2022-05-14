@@ -13,7 +13,7 @@
     "source": "functions"
   },
   "hosting": {
-    "site": "kuelfrank",
+    "site": "kuehlfrank",
     "public": "public",
     "ignore": [
       "firebase.json",
