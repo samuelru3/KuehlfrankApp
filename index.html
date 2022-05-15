@@ -19,11 +19,36 @@
         <div id="kuehlfrank-app" class="container bg-success p-2">
 
 
-
-
             <!-- Header -->
-            <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
+            <div v-if="display.Header" class="">
+                <ul class="list-group m-2">
+                    <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList">
+                        <span>
+                            <!-- <p style="font-size: 40px">Kühlfrank-App</p> -->
+                            <h1 style="margin: 0px;">Kühlfrank-App</h1>
+                        </span>
 
+                        <button v-if="display.Liste" class="btn btn-secondary mr-2" @click="">
+                            Anmelden
+                            <!-- <ion-icon name="pencil-outline"></ion-icon> -->
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1> -->
+            <!-- <div>
+                <ul>
+                    <li>
+                        <h1 class="bg-light rounded m-2 p-2">Kühlfrank-App</h1>
+                    </li>
+                    <li>
+                        <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
+                            edit
+                        </button>
+                    </li>
+                </ul>
+
+            </div> -->
 
 
             <!-- Statistik -->

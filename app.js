@@ -45,6 +45,7 @@ const LebensmittelApp = {
                 UpdateVonName: false,
                 NeuerName: false,
                 ListeNamen: false,
+                Header: true,
             },
             // --- für Update
             aktuellerIndex: -1
