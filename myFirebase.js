@@ -14,9 +14,8 @@ import {
     connectAuthEmulator,
     signInWithEmailAndPassword
 } from "firebase/auth";
+import { async } from "@firebase/util";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyDYX72UFIZIwUHXVGLw7psxAnSixpIlqHg",
     authDomain: "kuehlfrank-16459.firebaseapp.com",
@@ -27,3 +26,14 @@ const firebaseConfig = {
     measurementId: "G-3BXWGT66J4"
 };
 
+const auth = getAuth(firebaseConfig);
+
+const loginEmailPassword = async () => {
+    const loginEmail = txtEmail.value;
+    const loginPassword = txtPassword.value;
+
+    const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+    console.log(userCredential.user);
+}
+
+btnLogin.addEventListener("click", loginEmailPassword);
