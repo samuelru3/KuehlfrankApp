@@ -1,5 +1,3 @@
-// Vue.component('v-select', VueSelect.VueSelect);
-
 const LebensmittelApp = {
 
     data() {

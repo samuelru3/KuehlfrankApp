@@ -13,6 +13,9 @@
                 margin: 1em auto;
             }
         </style>
+        <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+        <link type="text/css" rel="stylesheet"
+            href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     </head>
 
     <body>
@@ -20,12 +23,17 @@
 
 
             <!-- Header -->
-            <div v-if="display.Header" class="">
-                <ul class="list-group m-2">
+            <div v-if="display.Header" class="bg-light rounded m-2 p-2">
+                <h1 style="margin: 0px;">Kühlfrank-App</h1>
+                <button v-if="display.Liste" class="btn btn-secondary mr-2" @click="">
+                    Anmelden
+                    <!-- <ion-icon name="pencil-outline"></ion-icon> -->
+                </button>
+                <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between" v-for="lebensmittel in lebensmittelList">
                         <span>
                             <!-- <p style="font-size: 40px">Kühlfrank-App</p> -->
-                            <h1 style="margin: 0px;">Kühlfrank-App</h1>
+
                         </span>
 
                         <button v-if="display.Liste" class="btn btn-secondary mr-2" @click="">
@@ -285,34 +293,12 @@
         </div>
         <script src="https://unpkg.com/vue@next"></script>
         <script src="app.js"></script>
+        <script src="myFirebase.js"></script>
         <script src="https://unpkg.com/ionicons@6.0.1/dist/ionicons.js"></script>
 
         <script src="https://unpkg.com/vue@2"></script>
         <script src="https://unpkg.com/vue-select@latest"></script>
-        <!-- Google Firebase Hosting -->
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.1/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
 
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-                apiKey: "AIzaSyDYX72UFIZIwUHXVGLw7psxAnSixpIlqHg",
-                authDomain: "kuehlfrank-16459.firebaseapp.com",
-                projectId: "kuehlfrank-16459",
-                storageBucket: "kuehlfrank-16459.appspot.com",
-                messagingSenderId: "836415633281",
-                appId: "1:836415633281:web:0e7538d70ab8af85a2da80",
-                measurementId: "G-3BXWGT66J4"
-            };
-
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-        </script>
 
     </body>
 
