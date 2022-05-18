@@ -1,3 +1,5 @@
+// console.error('sdgsgd');
+
 const LebensmittelApp = {
 
     data() {
