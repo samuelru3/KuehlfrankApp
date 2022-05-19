@@ -28,7 +28,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         loggedIn.style.display = 'none'
         notLoggedIn.style.display = 'block'
     }
-})
+});
 
 
 function login(event) {
@@ -43,7 +43,7 @@ function login(event) {
             alert('Welcome back, you are now logged in!')
         }
     })
-}
+};
 
 function logout() {
     firebase.auth().signOut().them(function () {
@@ -51,7 +51,7 @@ function logout() {
     }).catch(function (error) {
 
     });
-}
+};
 
 // Initialize Firebase
 // const app = initializeApp(firebaseConfig);
