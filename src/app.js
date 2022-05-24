@@ -404,5 +404,5 @@ const LebensmittelApp = {
 };
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
 
-// const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
+const auth = getAuth(firebaseApp);
+connectAuthEmulator(auth, "http://localhost:9099");
