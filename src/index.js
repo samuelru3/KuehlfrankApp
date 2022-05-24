@@ -11,6 +11,7 @@ import {
 } from './ui'
 
 import { initializeApp } from 'firebase/app';
+import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   onAuthStateChanged,
@@ -23,12 +24,15 @@ import {
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDYX72UFIZIwUHXVGLw7psxAnSixpIlqHg",
   authDomain: "kuehlfrank-16459.firebaseapp.com",
+  databaseURL: "https://kuehlfrank-16459-default-rtdb.europe-west1.firebasedatabase.app",
   projectId: "kuehlfrank-16459",
   storageBucket: "kuehlfrank-16459.appspot.com",
   messagingSenderId: "836415633281",
   appId: "1:836415633281:web:0e7538d70ab8af85a2da80",
   measurementId: "G-3BXWGT66J4"
 });
+
+// const analytics = getAnalytics(app);
 
 // Login using email/password
 const loginEmailPassword = async () => {
