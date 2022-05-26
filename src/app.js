@@ -1,4 +1,4 @@
-// Vue.component('v-select', VueSelect.VueSelect);
+// console.error('sdgsgd');
 
 const LebensmittelApp = {
 
@@ -45,6 +45,7 @@ const LebensmittelApp = {
                 UpdateVonName: false,
                 NeuerName: false,
                 ListeNamen: false,
+                Header: true,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -402,3 +403,6 @@ const LebensmittelApp = {
     },
 };
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
+
+const auth = getAuth(firebaseApp);
+connectAuthEmulator(auth, "http://localhost:9099");
