@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "dummy-project-id"
-  }
+    "default": "kuehlfrank-16459",
+    "kuehlfrank": "kuehlfrank-16459"
+  },
+  "targets": {}
 }
