@@ -11,6 +11,7 @@
     }
   },
   "hosting": {
+    "site": "kuehlfrank",
     "public": "dist",
     "ignore": [
       "firebase.json",
