@@ -39,7 +39,7 @@ const loginEmailPassword = async () => {
   const loginEmail = txtEmail.value
   const loginPassword = txtPassword.value
 
-  // step 1: try doing this w/o error handling, and then add try/catch
+  // step 1: try doing this w/o error handling, and then add try/ckatch
   await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
 
   // step 2: add error handling
