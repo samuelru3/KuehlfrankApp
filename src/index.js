@@ -7,11 +7,12 @@ import {
   showLoginError,
   btnLogin,
   btnSignup,
-  btnLogout
+  btnLogout,
+  hideLoginForm
 } from './ui'
 
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import {
   getAuth,
   onAuthStateChanged,
@@ -97,4 +98,13 @@ btnLogout.addEventListener("click", logout)
 const auth = getAuth(firebaseApp);
 // connectAuthEmulator(auth, "http://localhost:9099");
 
-monitorAuthState();
+const hideAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    const monitorAuthState = async () => {
+      onAuthStateChanged(auth, user => {
+        hideLoginForm()
+      })
+    }
+  })
+}
+hideLoginForm();

@@ -16,7 +16,12 @@ export const lblLoginErrorMessage = document.querySelector('#lblLoginErrorMessag
 
 export const showLoginForm = () => {
   login.style.display = 'block'
-  app.style.display = 'none'  
+  app.style.display = 'none'
+}
+
+export const hideLoginForm = () => {
+  login.style.display = 'none'
+  app.style.display = 'none'
 }
 
 export const showApp = () => {
@@ -30,12 +35,12 @@ export const hideLoginError = () => {
 }
 
 export const showLoginError = (error) => {
-  divLoginError.style.display = 'block'    
+  divLoginError.style.display = 'block'
   if (error.code == AuthErrorCodes.INVALID_PASSWORD) {
     lblLoginErrorMessage.innerHTML = `Wrong password. Try again.`
   }
   else {
-    lblLoginErrorMessage.innerHTML = `Error: ${error.message}`      
+    lblLoginErrorMessage.innerHTML = `Error: ${error.message}`
   }
 }
 
