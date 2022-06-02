@@ -71,6 +71,7 @@ const monitorAuthState = async () => {
   onAuthStateChanged(auth, user => {
     if (user) {
       console.log(user)
+      console.log('Halloooooo');
       showApp()
       showLoginState(user)
 

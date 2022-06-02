@@ -39,13 +39,13 @@ const LebensmittelApp = {
             display: {
                 Formular: false,
                 Statistik: false,
-                // Liste ist Standart (true):
-                Liste: true,
+                Liste: true,         // Liste ist Standart (true):
                 Update: false,
                 UpdateVonName: false,
                 NeuerName: false,
                 ListeNamen: false,
                 Header: true,
+                Anmeldung: true,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -143,6 +143,7 @@ const LebensmittelApp = {
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
+            this.display.Anmeldung = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -153,6 +154,7 @@ const LebensmittelApp = {
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
+            this.display.Anmeldung = false;
         },
 
         updateAnzeigen() {
@@ -163,6 +165,7 @@ const LebensmittelApp = {
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
+            this.display.Anmeldung = false;
         },
 
         namenListeAnzeigen() {
@@ -173,6 +176,7 @@ const LebensmittelApp = {
             this.display.NeuerName = false;
             this.display.ListeNamen = true;
             this.display.UpdateVonName = false;
+            this.display.Anmeldung = false;
         },
 
         nameHinzufuegenAnzeigen() {
@@ -183,6 +187,7 @@ const LebensmittelApp = {
             this.display.NeuerName = true;
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
+            this.display.Anmeldung = false;
         },
 
         updateNameAnzeigen() {
@@ -193,6 +198,7 @@ const LebensmittelApp = {
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
             this.display.UpdateVonName = true;
+            this.display.Anmeldung = false;
         },
 
         // ### Handler für Buttons ###
@@ -405,4 +411,4 @@ const LebensmittelApp = {
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
 
 const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
+connectAuthEmulator(auth, "http://localhost:9099");

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting started with Firebase Auth</title>
+    <title>Kühlfrank</title>
     <script src="/dist/bundle.js"></script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -14,39 +14,43 @@
 
 
   <body>
-
-    <div id="login">
-      <div class="header">
-        <h1>Getting Started with Firebase Auth</h1>
+    <div v-if="display.Anmeldung">
+      rgrg
+      <div id="login">
+        <div class="header">
+          <h1>Log dich in deinem Kühlfrank ein:</h1>
+        </div>
+        <form>
+          <div class="group">
+            <input id="txtEmail" type="email">
+            <label>Email</label>
+          </div>
+          <div class="group">
+            <input id="txtPassword" type="password">
+            <label>Password</label>
+          </div>
+          <div id="divLoginError" class="group">
+            <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
+          </div>
+          <button id="btnLogin" type="button" class="button buttonBlue">Log in</button>
+          <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
+        </form>
       </div>
-      <form>
-        <div class="group">
-          <input id="txtEmail" type="email">
-          <label>Email</label>
+
+      <div id="app">
+        <div class="header">
+          <h1>Eingeloggt im Kühlfrank</h1>
         </div>
-        <div class="group">
-          <input id="txtPassword" type="password">
-          <label>Password</label>
-        </div>
-        <div id="divLoginError" class="group">
-          <div id="lblLoginErrorMessage" class="errorlabel">Error message</div>
-        </div>
-        <button id="btnLogin" type="button" class="button buttonBlue">Log in</button>
-        <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
-      </form>
+        <form>
+          <div class="group">
+            <div id="lblAuthState" class="authlabel"></div>
+          </div>
+          <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
+        </form>
+      </div>
+
     </div>
 
-    <div id="app">
-      <div class="header">
-        <h1>Welcome to Your Amazing epp</h1>
-      </div>
-      <form>
-        <div class="group">
-          <div id="lblAuthState" class="authlabel"></div>
-        </div>
-        <button id="btnLogout" type="button" class="button buttonBlue">Log out</button>
-      </form>
-    </div>
 
     <!-- Altes ab hier -->
 
