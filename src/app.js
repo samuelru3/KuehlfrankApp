@@ -136,14 +136,14 @@ const LebensmittelApp = {
     methods: {
         // ### Komponenten anzeigen und verstecken ###
         formularAnzeigen() {
-            this.display.Statistik = false;
+            // this.display.Statistik = false;
             this.display.Liste = false;
             this.display.Formular = true;
-            this.display.Update = false;
+            // this.display.Update = false;
             this.display.NeuerName = false;
-            this.display.ListeNamen = false;
-            this.display.UpdateVonName = false;
-            this.display.Anmeldung = false;
+            // this.display.ListeNamen = false;
+            // this.display.UpdateVonName = false;
+            // this.display.Anmeldung = false;
         },
 
         statistikUndListeAnzeigen() {

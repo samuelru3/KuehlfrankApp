@@ -58,7 +58,7 @@
       <div v-if="display.Header" class="bg-light rounded m-2 p-2 row">
         <h1 class="col" style="margin: 0px; padding-left: 0%;">Kühlfrank-App</h1>
 
-        <button class="btn btn-secondary mr-2" @click="">
+        <button v-if="display.Liste" class="btn btn-secondary mr-2" @click="">
           Anmelden
         </button>
       </div>
@@ -147,18 +147,26 @@
 
 
         <!-- Hinzufügen-Butoon -->
-        <div class="m-2">
+        <!-- <div class="m-2">
           <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
-            <!-- <img src="plus-circle.svg" alt="+"> -->
-            <!-- <ion-icon name="add-circle-outline" style="size: 200px;"></ion-icon> -->
-            <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
             Hinzufügen
+          </button>
+        </div> -->
+        <div class="p-2 m-2 row">
+          <button class="btn col btn-success" style="margin-right: 5px;" @click="buttonHinzufuegen">
+            Hinzufügen
+          </button>
+          <button class="btn btn-dark" @click="buttonAbbrechen">
+            abbrechen
           </button>
         </div>
       </div>
 
 
-      <!-- Liste alle Namen -->
+
+
+
+      <!-- Liste aller Namen -->
       <div v-if="display.ListeNamen" class="bg-light rounded m-2 p-2">
         <h2>Liste aller Namen</h2>
         <ul class="list-group m-2">
@@ -175,9 +183,22 @@
               <button class="btn btn-danger" @click="">x</button></span>
             <!-- buttonLoeschen(lebensmittel.id) -->
           </li>
+
+
           <!-- Button Neues Lebensmittel Eintragen-->
-          <li class="list-group-item"><button @click="nameHinzufuegenAnzeigen" class="btn btn-block btn-success">+
-              Neuer Name</button></li>
+          <li class="list-group-item"><button @click="nameHinzufuegenAnzeigen" class="btn btn-block btn-success">+ Neuer
+              Name</button></li>
+
+          <div class="p-2 m-2 row">
+            <button class="btn col btn-success" style="margin-right: 5px;" @click="nameHinzufuegenAnzeigen">
+              + Neuer Name
+            </button>
+            <button class="btn btn-dark" @click="button">
+              abbrechen
+            </button>
+          </div>
+
+
         </ul>
       </div>
 
@@ -258,8 +279,8 @@
         </div>
 
         <div class="d-flex justify-content-end m-2">
-          <button class="btn btn-warning mr-2" @click="buttonCancel">Abbrechen</button>
-          <button class="btn btn-primary" @click="buttonAenderungenSpeichern(this.aktuellerIndex)">Änderungen
+          <button class="btn btn-dark mr-2" @click="buttonCancel">Abbrechen</button>
+          <button class="btn btn-success" @click="buttonAenderungenSpeichern(this.aktuellerIndex)">Änderungen
             speichern</button>
         </div>
       </div>
@@ -285,8 +306,8 @@
         </div>
 
         <div class="d-flex justify-content-end m-2">
-          <button class="btn btn-warning mr-2" @click="buttonNameCancel">Abbrechen</button>
-          <button class="btn btn-primary" @click="buttonNamenAenderungenSpeichern(this.aktuellerIndex)">Änderungen
+          <button class="btn btn-dark mr-2" @click="buttonNameCancel">Abbrechen</button>
+          <button class="btn btn-success" @click="buttonNamenAenderungenSpeichern(this.aktuellerIndex)">Änderungen
             speichern</button>
         </div>
       </div>
