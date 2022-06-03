@@ -136,12 +136,12 @@ const LebensmittelApp = {
     methods: {
         // ### Komponenten anzeigen und verstecken ###
         formularAnzeigen() {
-            // this.display.Statistik = false;
+            this.display.NeuerName = false;
             this.display.Liste = false;
             this.display.Formular = true;
+            this.display.ListeNamen = false;
+            // this.display.Statistik = false;
             // this.display.Update = false;
-            this.display.NeuerName = false;
-            // this.display.ListeNamen = false;
             // this.display.UpdateVonName = false;
             // this.display.Anmeldung = false;
         },
@@ -250,12 +250,6 @@ const LebensmittelApp = {
 
         },
 
-        buttonNameAbbrechen() {
-            console.log('Button Name Abbrechen');
-            // Statistik und Liste anzeigen
-            this.formularAnzeigen();
-        },
-
         buttonLoeschen(id) {
             // Lebensmittel mit der id von Liste enfernen
             let index = -1;
@@ -268,6 +262,20 @@ const LebensmittelApp = {
 
             // Daten persistent speichern
             this.speichern();
+        },
+
+        buttonNameLoeschen(id) {
+            // Lebensmittel mit der id von Liste enfernen
+            let index = -1;
+            for (let i = 0; i < this.namenList.length; i++) {
+                if (this.namenList[i].id === id) {
+                    index = i;
+                }
+            }
+            this.namenList.splice(index, 1);
+
+            // Daten persistent speichern
+            this.namenSpeichern();
         },
 
         buttonUpdate(id) {
@@ -319,6 +327,9 @@ const LebensmittelApp = {
 
             // GUI anzeigen
             this.updateNameAnzeigen();
+
+            this.namenSpeichern();
+
         },
 
         buttonAenderungenSpeichern(index) {
@@ -347,12 +358,6 @@ const LebensmittelApp = {
 
             // Daten persistent speichern
             this.namenSpeichern();
-        },
-
-
-        buttonCancel() {
-            // GUI anzeigen
-            this.statistikUndListeAnzeigen();
         },
 
         buttonNameCancel() {

@@ -86,6 +86,37 @@ const monitorAuthState = async () => {
   })
 }
 
+import { getDatabase, ref, child, get } from "firebase/database";
+
+const dbRef = ref(getDatabase('cloudNamenList'));
+dbRef.on('value', snpachot => {
+  console.log(snpachot.val());
+  console.log('versucht');
+})
+
+// get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val());
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// });
+
+
+// const database = firebase.database();
+// const rootRef = database.ref('cloudNamenList');
+
+// rootRef.orderByKey().on('value', snpachot => {
+//   console.log(snpachot.val());
+//   console.log('versucht');
+// })
+
+
+
+
+
 // Log out
 const logout = async () => {
   await signOut(auth);
@@ -93,6 +124,7 @@ const logout = async () => {
 
 btnLogin.addEventListener("click", loginEmailPassword)
 btnSignup.addEventListener("click", createAccount)
+btnData.addEventListener("click", conGetNamenList)
 btnLogout.addEventListener("click", logout)
 
 const auth = getAuth(firebaseApp);
@@ -108,3 +140,22 @@ const hideAuthState = async () => {
   })
 }
 hideLoginForm();
+
+
+
+
+
+
+
+// import { getDatabase, ref, child, get } from "firebase/database";
+
+// const dbRef = ref(getDatabase());
+// get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val());
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// });

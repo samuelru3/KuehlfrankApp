@@ -33,6 +33,8 @@
           </div>
           <button id="btnLogin" type="button" class="button buttonBlue">Log in</button>
           <button id="btnSignup" type="button" class="button buttonBlue">Sign up</button>
+          <button id="btnData" type="button" class="button buttonBlue">Get Data</button>
+
         </form>
       </div>
 
@@ -146,17 +148,11 @@
         </div>
 
 
-        <!-- Hinzufügen-Butoon -->
-        <!-- <div class="m-2">
-          <button class="btn btn-block btn-success" @click="buttonHinzufuegen">
-            Hinzufügen
-          </button>
-        </div> -->
         <div class="p-2 m-2 row">
           <button class="btn col btn-success" style="margin-right: 5px;" @click="buttonHinzufuegen">
             Hinzufügen
           </button>
-          <button class="btn btn-dark" @click="buttonAbbrechen">
+          <button class="btn btn-dark" @click="statistikUndListeAnzeigen">
             abbrechen
           </button>
         </div>
@@ -180,20 +176,16 @@
                 edit
                 <!-- <ion-icon name="pencil-outline"></ion-icon> -->
               </button>
-              <button class="btn btn-danger" @click="">x</button></span>
-            <!-- buttonLoeschen(lebensmittel.id) -->
+              <button class="btn btn-danger" @click="buttonNameLoeschen(namenList.id)">x</button></span>
           </li>
 
 
           <!-- Button Neues Lebensmittel Eintragen-->
-          <li class="list-group-item"><button @click="nameHinzufuegenAnzeigen" class="btn btn-block btn-success">+ Neuer
-              Name</button></li>
-
           <div class="p-2 m-2 row">
             <button class="btn col btn-success" style="margin-right: 5px;" @click="nameHinzufuegenAnzeigen">
               + Neuer Name
             </button>
-            <button class="btn btn-dark" @click="button">
+            <button class="btn btn-dark" @click="formularAnzeigen">
               abbrechen
             </button>
           </div>
@@ -235,7 +227,7 @@
             <!-- <img src="add-circle-outline.svg" alt="+" style="height: 30px; color: white;"> -->
             Hinzufügen
           </button>
-          <button class="btn btn-dark" @click="buttonNameAbbrechen">
+          <button class="btn btn-dark" @click="namenListeAnzeigen">
             abbrechen
           </button>
         </div>
