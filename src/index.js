@@ -86,6 +86,10 @@ const monitorAuthState = async () => {
   })
 }
 
+
+
+//      DATABASE{
+
 import { getDatabase, ref, child, get } from "firebase/database";
 
 const dbRef = ref(getDatabase('cloudNamenList'));
@@ -114,7 +118,7 @@ dbRef.on('value', snpachot => {
 // })
 
 
-
+//      } DATABASE
 
 
 // Log out
@@ -124,7 +128,7 @@ const logout = async () => {
 
 btnLogin.addEventListener("click", loginEmailPassword)
 btnSignup.addEventListener("click", createAccount)
-btnData.addEventListener("click", conGetNamenList)
+btnData.addEventListener("click", dbRef)
 btnLogout.addEventListener("click", logout)
 
 const auth = getAuth(firebaseApp);
