@@ -141,7 +141,7 @@ const LebensmittelApp = {
             this.display.Formular = true;
             // this.display.Update = false;
             this.display.NeuerName = false;
-            // this.display.ListeNamen = false;
+            this.display.ListeNamen = false;
             // this.display.UpdateVonName = false;
             // this.display.Anmeldung = false;
         },
