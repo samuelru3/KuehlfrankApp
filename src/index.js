@@ -13,6 +13,9 @@ import {
 
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from "firebase/analytics";
+
+import { getDatabase, connectDatabaseEmulator } from "firebase/database";
+
 import {
   getAuth,
   onAuthStateChanged,
@@ -97,6 +100,13 @@ btnLogout.addEventListener("click", logout)
 
 const auth = getAuth(firebaseApp);
 // connectAuthEmulator(auth, "http://localhost:9099");
+
+const database = getDatabase(firebaseApp);
+
+if (location.hostname === "localhost") {
+  // Point to the RTDB emulator running on localhost.
+  connectDatabaseEmulator(database, "localhost", 9000);
+}
 
 const hideAuthState = async () => {
   onAuthStateChanged(auth, user => {

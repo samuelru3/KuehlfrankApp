@@ -1,0 +1,56 @@
+{
+  "cloudNamenList": [
+    {
+      "id": 2,
+      "kategorie": "Milchprodukte",
+      "name": "Milch"
+    },
+    {
+      "id": 3,
+      "kategorie": "Milchprodukte",
+      "name": "Käse"
+    },
+    {
+      "id": 4,
+      "kategorie": "Milchprodukte",
+      "name": "Butter"
+    },
+    {
+      "id": 5,
+      "kategorie": "Milchprodukte",
+      "name": "Jogurt"
+    },
+    {
+      "id": 6,
+      "kategorie": "Obst",
+      "name": "Banane"
+    }
+  ],
+  "namenList": [
+    {
+      "id": 2,
+      "kategorie": "Milchprodukte",
+      "name": "Milch"
+    },
+    {
+      "id": 3,
+      "kategorie": "Milchprodukte",
+      "name": "Käse"
+    },
+    {
+      "id": 4,
+      "kategorie": "Milchprodukte",
+      "name": "Butter"
+    },
+    {
+      "id": 5,
+      "kategorie": "Milchprodukte",
+      "name": "Jogurt"
+    },
+    {
+      "id": 6,
+      "kategorie": "Obst",
+      "name": "Banane"
+    }
+  ]
+}
