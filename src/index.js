@@ -14,7 +14,7 @@ import {
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from "firebase/analytics";
 
-import { getDatabase, connectDatabaseEmulator } from "firebase/database";
+import { getDatabase, connectDatabaseEmulator, ref, child, get } from "firebase/database";
 
 import {
   getAuth,
@@ -35,8 +35,6 @@ const firebaseApp = initializeApp({
   appId: "1:836415633281:web:0e7538d70ab8af85a2da80",
   measurementId: "G-3BXWGT66J4"
 });
-
-// const analytics = getAnalytics(app);
 
 // Login using email/password
 const loginEmailPassword = async () => {
@@ -99,9 +97,19 @@ btnSignup.addEventListener("click", createAccount)
 btnLogout.addEventListener("click", logout)
 
 const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
 
 const database = getDatabase(firebaseApp);
+
+// const dbRef = ref(getDatabase(firebaseApp));
+// get(child(dbRef, `users/${userId}`)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val());
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.error(error);
+// });
 
 if (location.hostname === "localhost") {
   // Point to the RTDB emulator running on localhost.
