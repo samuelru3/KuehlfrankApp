@@ -177,7 +177,27 @@ export function inDatenbankSchreiben() {
 }
 
 // export var cloudNamen = 'w';
-export function namenAusDatenbankLesen(cloudNamen) {
+export function namenAusDatenbankLesen() {
+  try {
+    // firebase.initializeApp(firebaseConfig);
+
+    // read data
+    firebase.database()
+      .ref('cloudNamenList')
+      .on('value', (sanpshot) => {
+        // console.log(sanpshot.val())
+        var cloudNamen = sanpshot.val();
+        // console.log(cloudNamen);
+      })
+
+  } catch (error) {
+    console.error("Datenbankabfrage Fehlgeschlagen!!!");
+  }
+  // console.log(cloudNamen);
+  return cloudNamen;
+}
+
+export function namenAusDatenbankLesen2() {
   try {
     // firebase.initializeApp(firebaseConfig);
 
@@ -188,13 +208,17 @@ export function namenAusDatenbankLesen(cloudNamen) {
         // console.log(sanpshot.val())
         var cloudNamen = sanpshot.val();
         console.log(cloudNamen);
-
+        console.log('read');
+        // console.log(cloudNamen);
+        // console.log('read danach');
+        return cloudNamen;
       })
 
   } catch (error) {
     console.error("Datenbankabfrage Fehlgeschlagen!!!");
   }
-  return;
+
 }
+
 
 

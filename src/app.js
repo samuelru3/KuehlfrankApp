@@ -1,5 +1,5 @@
 // console.error('sdgsgd');
-import { inDatenbankSchreiben, namenAusDatenbankLesen, cloudNamen } from "./index.js";
+import { inDatenbankSchreiben, namenAusDatenbankLesen, namenAusDatenbankLesen2, cloudNamen } from "./index.js";
 
 const LebensmittelApp = {
 
@@ -403,19 +403,46 @@ const LebensmittelApp = {
         },
 
         namenAusDatenbankImport() {
-            namenAusDatenbankLesen(cloudNamen);
-            console.log(cloudNamen);
-        }
+            // namenAusDatenbankLesen();
+            console.log(namenAusDatenbankLesen());
+        },
+
+        async namenAusDatenbankImport2() {
+            console.log('sds');
+            var out = namenAusDatenbankLesen2();
+            console.log('d');
+            // console.log(out = await namenAusDatenbankLesen2());
+            console.log(out);
+            console.log('g');
+        },
+
+        // resolveAfter2Seconds() {
+        //     return new Promise(resolve => {
+        //         setTimeout(() => {
+        //             resolve('resolved');
+        //         }, 200);
+        //     });
+        // },
+
+        // async asyncCall() {
+        //     console.log('calling');
+        //     const result = await resolveAfter2Seconds();
+        //     console.log(result);
+        //     // expected output: "resolved"
+        // }
+
+
 
 
     },
 
     mounted() {
+        // asyncCall();
         // Persistent gespeicherte Daten laden
         this.laden();
         inDatenbankSchreiben();
-        this.namenAusDatenbankImport();
-        // TODO: wichtiger bestandteil der in lesen gebraucht wird wird in schreiben erstellt also muss schreiben auch ausgeführt werden
+        this.namenAusDatenbankImport2();
+        // TODO: wichtiger bestandteil der in lesen gebraucht wird, wird in schreiben erstellt also muss schreiben auch ausgeführt werden
         this.namenLaden();
     },
 };
