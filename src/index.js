@@ -126,37 +126,7 @@ const database = getDatabase(firebaseApp);
 
 
 
-try {
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-
-  // Add data
-  let obj = {
-    name: "TF3",
-    age: 25,
-  };
-  firebase.database().ref("users/user2").set(obj);
-
-  // // read data
-  firebase
-    .database()
-    .ref("users/user2")
-    .on("value", (sanpshot) => {
-      console.log(sanpshot.val());
-    });
-
-  // update data
-  // let newupdateddata = {
-  //     name: "TF0",
-  // };
-  // firebase.database().ref("users/user3").update(newupdateddata);
-
-  // remove data
-  // firebase.database().ref("users/user3").remove();
-
-} catch (error) {
-  console.error("Datenbankabfrage Fehlgeschlagen!!!")
-}
+// inDatenbankSchreiben();
 
 
 if (location.hostname === "localhost") {
@@ -174,3 +144,59 @@ const hideAuthState = async () => {
   })
 }
 hideLoginForm();
+
+export function inDatenbankSchreiben() {
+  try {
+    firebase.initializeApp(firebaseConfig);
+
+    // Add data
+    let obj = {
+      name: "TF3",
+      age: 25,
+    };
+    firebase.database().ref("users/user2").set(obj);
+
+    // // read data
+    firebase
+      .database()
+      .ref("users/user2")
+      .on("value", (sanpshot) => {
+        console.log(sanpshot.val());
+      });
+
+    // update data
+    // let newupdateddata = {
+    //     name: "TF0",
+    // };
+    // firebase.database().ref("users/user3").update(newupdateddata);
+    // remove data
+    // firebase.database().ref("users/user3").remove();
+  } catch (error) {
+    console.error("Datenbankabfrage Fehlgeschlagen!!!");
+  }
+}
+
+export function namenAusDatenbankLesen() {
+  try {
+    // firebase.initializeApp(firebaseConfig);
+
+    // read data
+    firebase
+      .database()
+      .ref("cloudNamenList/1")
+      .on("value", (sanpshot) => {
+        console.log(sanpshot.val());
+      });
+
+    // update data
+    // let newupdateddata = {
+    //     name: "TF0",
+    // };
+    // firebase.database().ref("users/user3").update(newupdateddata);
+    // remove data
+    // firebase.database().ref("users/user3").remove();
+  } catch (error) {
+    console.error("Datenbankabfrage Fehlgeschlagen!!!");
+  }
+}
+

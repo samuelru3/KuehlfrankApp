@@ -1,4 +1,5 @@
 // console.error('sdgsgd');
+import { inDatenbankSchreiben, namenAusDatenbankLesen } from "./index.js";
 
 const LebensmittelApp = {
 
@@ -405,6 +406,8 @@ const LebensmittelApp = {
     mounted() {
         // Persistent gespeicherte Daten laden
         this.laden();
+        inDatenbankSchreiben();
+        namenAusDatenbankLesen();
         this.namenLaden();
     },
 };
