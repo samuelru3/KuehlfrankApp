@@ -25,6 +25,18 @@ import {
   connectAuthEmulator
 } from 'firebase/auth';
 
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyDYX72UFIZIwUHXVGLw7psxAnSixpIlqHg",
+  authDomain: "kuehlfrank-16459.firebaseapp.com",
+  databaseURL: "https://kuehlfrank-16459-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "kuehlfrank-16459",
+  storageBucket: "kuehlfrank-16459.appspot.com",
+  messagingSenderId: "836415633281",
+  appId: "1:836415633281:web:0e7538d70ab8af85a2da80",
+  measurementId: "G-3BXWGT66J4"
+};
+
 const firebaseApp = initializeApp({
   apiKey: "AIzaSyDYX72UFIZIwUHXVGLw7psxAnSixpIlqHg",
   authDomain: "kuehlfrank-16459.firebaseapp.com",
@@ -112,19 +124,35 @@ const database = getDatabase(firebaseApp);
 // });
 
 
-try {
-  // once() method
-  firebase.database().ref('data').on('value', (snap) => {
-    console.log(snap.val());
-  });
 
+
+try {
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
 
   // Add data
   let obj = {
-    name: 'TF3',
-    age: 25
-  }
-  firebase.database().ref('users/user3').set(obj)
+    name: "TF3",
+    age: 25,
+  };
+  firebase.database().ref("users/user2").set(obj);
+
+  // // read data
+  firebase
+    .database()
+    .ref("users/user2")
+    .on("value", (sanpshot) => {
+      console.log(sanpshot.val());
+    });
+
+  // update data
+  // let newupdateddata = {
+  //     name: "TF0",
+  // };
+  // firebase.database().ref("users/user3").update(newupdateddata);
+
+  // remove data
+  // firebase.database().ref("users/user3").remove();
 
 } catch (error) {
   console.error("Datenbankabfrage Fehlgeschlagen!!!")
