@@ -111,6 +111,26 @@ const database = getDatabase(firebaseApp);
 //   console.error(error);
 // });
 
+
+try {
+  // once() method
+  firebase.database().ref('data').on('value', (snap) => {
+    console.log(snap.val());
+  });
+
+
+  // Add data
+  let obj = {
+    name: 'TF3',
+    age: 25
+  }
+  firebase.database().ref('users/user3').set(obj)
+
+} catch (error) {
+  console.error("Datenbankabfrage Fehlgeschlagen!!!")
+}
+
+
 if (location.hostname === "localhost") {
   // Point to the RTDB emulator running on localhost.
   connectDatabaseEmulator(database, "localhost", 9000);
