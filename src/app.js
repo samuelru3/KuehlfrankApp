@@ -1,5 +1,5 @@
 // console.error('sdgsgd');
-import { inDatenbankSchreiben, namenAusDatenbankLesen } from "./index.js";
+import { inDatenbankSchreiben, namenAusDatenbankLesen, cloudNamen } from "./index.js";
 
 const LebensmittelApp = {
 
@@ -400,14 +400,22 @@ const LebensmittelApp = {
                 this.namenSpeichern();
                 console.log(namenList + 'Fertig');
             }
+        },
+
+        namenAusDatenbankImport() {
+            namenAusDatenbankLesen(cloudNamen);
+            console.log(cloudNamen);
         }
+
+
     },
 
     mounted() {
         // Persistent gespeicherte Daten laden
         this.laden();
         inDatenbankSchreiben();
-        namenAusDatenbankLesen();
+        this.namenAusDatenbankImport();
+        // TODO: wichtiger bestandteil der in lesen gebraucht wird wird in schreiben erstellt also muss schreiben auch ausgeführt werden
         this.namenLaden();
     },
 };

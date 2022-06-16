@@ -176,27 +176,25 @@ export function inDatenbankSchreiben() {
   }
 }
 
-export function namenAusDatenbankLesen() {
+// export var cloudNamen = 'w';
+export function namenAusDatenbankLesen(cloudNamen) {
   try {
     // firebase.initializeApp(firebaseConfig);
 
     // read data
-    firebase
-      .database()
-      .ref("cloudNamenList/1")
-      .on("value", (sanpshot) => {
-        console.log(sanpshot.val());
-      });
+    firebase.database()
+      .ref('cloudNamenList')
+      .on('value', (sanpshot) => {
+        // console.log(sanpshot.val())
+        var cloudNamen = sanpshot.val();
+        console.log(cloudNamen);
 
-    // update data
-    // let newupdateddata = {
-    //     name: "TF0",
-    // };
-    // firebase.database().ref("users/user3").update(newupdateddata);
-    // remove data
-    // firebase.database().ref("users/user3").remove();
+      })
+
   } catch (error) {
     console.error("Datenbankabfrage Fehlgeschlagen!!!");
   }
+  return;
 }
+
 
