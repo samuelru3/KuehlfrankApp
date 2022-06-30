@@ -1,5 +1,6 @@
 // console.error('sdgsgd');
-import { inDatenbankSchreiben, namenAusDatenbankLesen, namenAusDatenbankLesen2, cloudNamen } from "./index.js";
+import { inDatenbankSchreiben, namenAusDatenbankLesen, namenAusDatenbankLesen2, getHttpFake, out, cloudNamen } from "./index.js";
+import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue } from "firebase/database";
 
 const LebensmittelApp = {
 
@@ -407,32 +408,21 @@ const LebensmittelApp = {
             console.log(namenAusDatenbankLesen());
         },
 
-        async namenAusDatenbankImport2() {
-            console.log('sds');
-            var out = namenAusDatenbankLesen2();
-            console.log('d');
-            // console.log(out = await namenAusDatenbankLesen2());
-            console.log(out);
-            console.log('g');
+        namenAusDatenbankImport2() {
+            const dbRef = ref(getDatabase());
+            get(child(dbRef, `cloudNamenList`)).then((snapshot) => {
+                if (snapshot.exists()) {
+                    console.log(snapshot.val());
+                    cloudNamen = snapshot.val();
+                    const text = JSON.stringify(cloudNamen);
+                    localStorage.setItem('namenList', text);
+                } else {
+                    console.log("No data available");
+                }
+            }).catch((error) => {
+                console.error(error);
+            });
         },
-
-        // resolveAfter2Seconds() {
-        //     return new Promise(resolve => {
-        //         setTimeout(() => {
-        //             resolve('resolved');
-        //         }, 200);
-        //     });
-        // },
-
-        // async asyncCall() {
-        //     console.log('calling');
-        //     const result = await resolveAfter2Seconds();
-        //     console.log(result);
-        //     // expected output: "resolved"
-        // }
-
-
-
 
     },
 
@@ -442,6 +432,7 @@ const LebensmittelApp = {
         this.laden();
         inDatenbankSchreiben();
         this.namenAusDatenbankImport2();
+        this.namenAusDatenbankImport20();
         // TODO: wichtiger bestandteil der in lesen gebraucht wird, wird in schreiben erstellt also muss schreiben auch ausgeführt werden
         this.namenLaden();
     },

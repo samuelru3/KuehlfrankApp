@@ -14,7 +14,7 @@ import {
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from "firebase/analytics";
 
-import { getDatabase, connectDatabaseEmulator, ref, child, get } from "firebase/database";
+import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue } from "firebase/database";
 
 import {
   getAuth,
@@ -144,10 +144,10 @@ const hideAuthState = async () => {
   })
 }
 hideLoginForm();
+firebase.initializeApp(firebaseConfig);
 
 export function inDatenbankSchreiben() {
   try {
-    firebase.initializeApp(firebaseConfig);
 
     // Add data
     let obj = {
@@ -197,28 +197,154 @@ export function namenAusDatenbankLesen() {
   return cloudNamen;
 }
 
+export var out;
+
 export function namenAusDatenbankLesen2() {
-  try {
-    // firebase.initializeApp(firebaseConfig);
 
-    // read data
-    firebase.database()
-      .ref('cloudNamenList')
-      .on('value', (sanpshot) => {
-        // console.log(sanpshot.val())
-        var cloudNamen = sanpshot.val();
-        console.log(cloudNamen);
-        console.log('read');
-        // console.log(cloudNamen);
-        // console.log('read danach');
-        return cloudNamen;
-      })
+  // const dbRef = ref(getDatabase());
+  // get(child(dbRef, `cloudNamenList`)).then((snapshot) => {
+  //   if (snapshot.exists()) {
+  //     console.log(snapshot.val());
+  //     cloudNamen = snapshot.val();
 
-  } catch (error) {
-    console.error("Datenbankabfrage Fehlgeschlagen!!!");
-  }
+  //   } else {
+  //     console.log("No data available");
+  //   }
+  // }).catch((error) => {
+  //   console.error(error);
+  // });
+
+
+
+
+  // try {
+  //   // firebase.initializeApp(firebaseConfig);
+
+
+  //   return new Promise(resolve => {
+  //     // read data
+  //     firebase.database()
+  //       .ref('cloudNamenList')
+  //       .on('value', (sanpshot) => {
+  //         // console.log(sanpshot.val())
+  //         var cloudNamen = sanpshot.val();
+  //         // console.log(cloudNamen);
+  //         // out = cloudNamen;
+  //         // console.log(out);
+  //         console.log('read');
+  //         out = cloudNamen;
+  //         // console.log(cloudNamen);
+  //         // console.log('read danach');
+  //       })
+  //   });
+  // } catch (error) {
+  //   console.error("Datenbankabfrage Fehlgeschlagen!!!");
+  // }
+
+  // namenAusDatenbankLesen2().then(console.log)
 
 }
 
+
+// console.log(out);
+
+// export const getHttpFake = () => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       firebase.database()
+//         .ref('cloudNamenList')
+//         .on('value', (sanpshot) => {
+//           var cloudNamen = sanpshot.val();
+//           // console.log('read');
+//           // console.log(cloudNamen);
+//         })
+//     }, 0);
+//   });
+// }
+// // getHttpFake().then(console.log);
+
+// const getHttpFake2 = () => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       firebase.database()
+//         .ref('cloudNamenList')
+//         .on('value', (sanpshot) => {
+//           var cloudNamen = sanpshot.val();
+//           console.log('read');
+//           console.log(cloudNamen);
+//         })
+//     }, 0);
+//   });
+// }
+// // getHttpFake2().then(console.log);
+
+// const getHttpFake3 = () => {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+//       resolve('name');
+//     }, 0);
+//   });
+// }
+// getHttpFake3(2).then(console.log);
+
+// const getHttpFake4 = () => {
+//   return new Promise(resolve => {
+//     resolve('name2');
+//   });
+// }
+// getHttpFake4(2).then(console.log);
+
+// const dataB = () => {
+//   // namenAusDatenbankLesen2();
+//   return new Promise(resolve => {
+//     firebase.database()
+//       .ref('cloudNamenList')
+//       .on('value', (sanpshot) => {
+//         // var cloudNamen = sanpshot.val();
+//       })
+//   });
+// }
+// console.log(dataB());
+// dataB().then(console.log);
+// var a = dataB().then;
+// console.log(a);
+// // const getHttpFake5 = () => {
+// //   return new Promise(resolve => {
+// //     resolve(dataB());
+// //   });
+// // }
+// // getHttpFake5().then(console.log);
+
+// const printAllAsyncAwait = async () => {
+//   await console.log(namenAusDatenbankLesen2());
+//   await console.log("Leute");
+//   await console.log("was geht ab?");
+// }
+// printAllAsyncAwait();
+
+// // import { getDatabase, ref, child, get } from "firebase/database";
+
+// const dbRef = ref(getDatabase());
+// get(child(dbRef, cloudNamenList)).then((snapshot) => {
+//   if (snapshot.exists()) {
+//     console.log(snapshot.val());
+//   } else {
+//     console.log("No data available");
+//   }
+// }).catch((error) => {
+//   console.log(error);
+// });
+
+
+// const getData = () => {
+//   firebase.database()
+//     .ref('cloudNamenList')
+//     .on('value', (sanpshot) => {
+//       // var cloudNamen = sanpshot.val();
+//       // console.log(sanpshot.val());
+//     })
+// }
+// getData();
+// // console.log(getData().then());
 
 
