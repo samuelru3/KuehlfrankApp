@@ -416,6 +416,7 @@ const LebensmittelApp = {
                     cloudNamen = snapshot.val();
                     const text = JSON.stringify(cloudNamen);
                     localStorage.setItem('namenList', text);
+                    this.namenLaden();
                 } else {
                     console.log("No data available");
                 }
