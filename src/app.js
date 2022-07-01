@@ -408,6 +408,15 @@ const LebensmittelApp = {
             console.log(namenAusDatenbankLesen());
         },
 
+
+        laeuftAbInTagen() {
+            console.log("e");
+            var hi = "HI";
+            console.log(hi);
+            return hi;
+        },
+
+
         namenAusDatenbankImport2() {
             const dbRef = ref(getDatabase());
             get(child(dbRef, `cloudNamenList`)).then((snapshot) => {
