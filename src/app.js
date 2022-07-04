@@ -450,6 +450,7 @@ const LebensmittelApp = {
     mounted() {
         this.laden();
         inDatenbankSchreiben();
+        laeuftAbInTagenFunk();
         this.namenAusDatenbankImport2();
         this.namenLaden();
         this.differenzTage();
