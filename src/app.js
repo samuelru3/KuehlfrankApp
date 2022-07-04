@@ -419,12 +419,12 @@ const LebensmittelApp = {
 
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = d + " Tage"
-            // console.log(tage);
+            console.log(tage);
 
             this.laeuftAbInTagen = tage;
             console.log(this.laeuftAbInTagen);
-            this.laeuftAbInTagen = lebensmittelList[id].name;
-            console.log(laeuftAbInTagen);
+            // this.laeuftAbInTagen = lebensmittelList[id].name;
+            // console.log(laeuftAbInTagen);
         },
 
 
@@ -450,7 +450,7 @@ const LebensmittelApp = {
     mounted() {
         this.laden();
         inDatenbankSchreiben();
-        laeuftAbInTagenFunk();
+        this.differenzTage();
         this.namenAusDatenbankImport2();
         this.namenLaden();
         this.differenzTage();
