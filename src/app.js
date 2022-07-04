@@ -421,9 +421,9 @@ const LebensmittelApp = {
             let tage = d + " Tage"
             // console.log(tage);
 
-            // this.laeuftAbInTagen = tage;
-            // console.log(this.laeuftAbInTagen);
-            this.laeuftAbInTagen = lebensmittelList[id];
+            this.laeuftAbInTagen = tage;
+            console.log(this.laeuftAbInTagen);
+            this.laeuftAbInTagen = lebensmittelList[id].name;
             console.log(laeuftAbInTagen);
         },
 
