@@ -22,7 +22,7 @@ const LebensmittelApp = {
 
             },
 
-
+            laeuftAbInTagen: "",
 
             // Daten des Lebensmittels, welches upgedated wird
             updateLebensmittel: {},
@@ -409,11 +409,12 @@ const LebensmittelApp = {
         },
 
 
-        laeuftAbInTagen() {
+        laeuftAbInTagenFunk() {
             console.log("e");
             var hi = "HI";
             console.log(hi);
-            return hi;
+            this.laeuftAbInTagen = "hi";
+            this.aktuellerIndex = index;
         },
 
 
@@ -441,6 +442,7 @@ const LebensmittelApp = {
         // Persistent gespeicherte Daten laden
         this.laden();
         inDatenbankSchreiben();
+        laeuftAbInTagenFunk();
         this.namenAusDatenbankImport2();
         this.namenAusDatenbankImport20();
         // TODO: wichtiger bestandteil der in lesen gebraucht wird, wird in schreiben erstellt also muss schreiben auch ausgeführt werden

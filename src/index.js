@@ -48,6 +48,18 @@ const firebaseApp = initializeApp({
   measurementId: "G-3BXWGT66J4"
 });
 
+if (location.hostname === "localhost") {
+  // Point to the RTDB emulator running on localhost.
+  connectDatabaseEmulator(database, "localhost", 9000);
+  // databaseURL = "http://localhost:4000/database/kuehlfrank-16459/data/"
+}
+
+// if (location.hostname === "127.0.0.1") {
+// Point to the RTDB emulator running on localhost.
+// connectDatabaseEmulator(database, "localhost", 9000);
+// databaseURL = "http://localhost:4000/database/kuehlfrank-16459/data/"
+// }
+
 // Login using email/password
 const loginEmailPassword = async () => {
   const loginEmail = txtEmail.value
@@ -129,10 +141,7 @@ const database = getDatabase(firebaseApp);
 // inDatenbankSchreiben();
 
 
-if (location.hostname === "localhost") {
-  // Point to the RTDB emulator running on localhost.
-  connectDatabaseEmulator(database, "localhost", 9000);
-}
+
 
 const hideAuthState = async () => {
   onAuthStateChanged(auth, user => {
