@@ -22,7 +22,7 @@ const LebensmittelApp = {
 
             },
 
-
+            laeuftAbInTagen: "",
 
             // Daten des Lebensmittels, welches upgedated wird
             updateLebensmittel: {},
@@ -409,11 +409,22 @@ const LebensmittelApp = {
         },
 
 
-        laeuftAbInTagen() {
-            console.log("e");
-            var hi = "HI";
-            console.log(hi);
-            return hi;
+        differenzTage() {
+            const startDateTime = new Date(1995, 11, 4, 0, 0, 0, 0); // Erstes Release von Javascript
+            const startStamp = startDateTime.getTime();
+
+            let newDate = new Date();
+            let newStamp = newDate.getTime();
+            let diff = Math.round((newStamp - startStamp) / 1000);
+
+            let d = Math.floor(diff / (24 * 60 * 60));
+            let tage = d + " Tage"
+            // console.log(tage);
+
+            // this.laeuftAbInTagen = tage;
+            // console.log(this.laeuftAbInTagen);
+            this.laeuftAbInTagen = lebensmittelList[id];
+            console.log(laeuftAbInTagen);
         },
 
 
@@ -437,14 +448,11 @@ const LebensmittelApp = {
     },
 
     mounted() {
-        // asyncCall();
-        // Persistent gespeicherte Daten laden
         this.laden();
         inDatenbankSchreiben();
         this.namenAusDatenbankImport2();
-        this.namenAusDatenbankImport20();
-        // TODO: wichtiger bestandteil der in lesen gebraucht wird, wird in schreiben erstellt also muss schreiben auch ausgeführt werden
         this.namenLaden();
+        this.differenzTage();
     },
 };
 Vue.createApp(LebensmittelApp).mount('#kuehlfrank-app');
