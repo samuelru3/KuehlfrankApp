@@ -420,9 +420,9 @@ const LebensmittelApp = {
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = "in " + d + " Tagen  "
             // console.log(tage);
-            console.log(lebensmittel.mhd);
+            // console.log(lebensmittel.mhd);
             this.laeuftAbInTagen = tage;
-            console.log(this.laeuftAbInTagen);
+            // console.log(this.laeuftAbInTagen);
             // this.laeuftAbInTagen = lebensmittelList[id].name;
             // console.log(laeuftAbInTagen);
             return this.laeuftAbInTagen;
@@ -436,13 +436,13 @@ const LebensmittelApp = {
             let diff = Math.round((startStamp - newStamp) / 1000);
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = "vor " + d + " Tagen";
-            console.log(lebensmittel.geoeffnetSeit);
+            // console.log(lebensmittel.geoeffnetSeit);
             if (d + "" === "NaN") {
-                console.log('null');
+                // console.log('null');
                 return null;
             } else {
                 this.laeuftAbInTagen = tage;
-                console.log(this.laeuftAbInTagen);
+                // console.log(this.laeuftAbInTagen);
                 return this.laeuftAbInTagen;
             }
 
