@@ -1,7 +1,7 @@
 <!-- Funktioniert 13.06.2022 -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
   <head>
     <meta charset="UTF-8">
@@ -87,9 +87,9 @@
             :key="lebensmittel.id">
             <span>
               <strong>{{ lebensmittel.name }}</strong>:
-              {{ laeuftAbInTagen }}
-              {{ lebensmittel.mhd }},
-              {{ lebensmittel.geoeffnetSeit }},
+              <strong style="color:rgb(7, 34, 168); font-weight: 400;">{{ MHDDifferenzTage(lebensmittel) }}</strong>
+              <strong style="color:rgb(210, 94, 26); font-weight: 400;">{{ opendDifferenzTage(lebensmittel) }}</strong>
+              <!-- {{ lebensmittel.geoeffnetSeit }}, -->
               <!-- {{ lebensmittel.kategorie}} -->
             </span>
             <span>

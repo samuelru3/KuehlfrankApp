@@ -409,22 +409,43 @@ const LebensmittelApp = {
         },
 
 
-        differenzTage() {
-            const startDateTime = new Date(1995, 11, 4, 0, 0, 0, 0); // Erstes Release von Javascript
+        MHDDifferenzTage(lebensmittel) {
+            const startDateTime = new Date(lebensmittel.mhd);
             const startStamp = startDateTime.getTime();
 
             let newDate = new Date();
             let newStamp = newDate.getTime();
-            let diff = Math.round((newStamp - startStamp) / 1000);
+            let diff = Math.round((startStamp - newStamp) / 1000);
 
             let d = Math.floor(diff / (24 * 60 * 60));
-            let tage = d + " Tage"
-            console.log(tage);
-
+            let tage = "in " + d + " Tagen  "
+            // console.log(tage);
+            console.log(lebensmittel.mhd);
             this.laeuftAbInTagen = tage;
             console.log(this.laeuftAbInTagen);
             // this.laeuftAbInTagen = lebensmittelList[id].name;
             // console.log(laeuftAbInTagen);
+            return this.laeuftAbInTagen;
+        },
+
+        opendDifferenzTage(lebensmittel) {
+            const startDateTime = new Date(lebensmittel.geoeffnetSeit);
+            const startStamp = startDateTime.getTime();
+            let newDate = new Date();
+            let newStamp = newDate.getTime();
+            let diff = Math.round((startStamp - newStamp) / 1000);
+            let d = Math.floor(diff / (24 * 60 * 60));
+            let tage = "vor " + d + " Tagen";
+            console.log(lebensmittel.geoeffnetSeit);
+            if (d + "" === "NaN") {
+                console.log('null');
+                return null;
+            } else {
+                this.laeuftAbInTagen = tage;
+                console.log(this.laeuftAbInTagen);
+                return this.laeuftAbInTagen;
+            }
+
         },
 
 
@@ -450,7 +471,7 @@ const LebensmittelApp = {
     mounted() {
         this.laden();
         inDatenbankSchreiben();
-        this.differenzTage();
+        // this.differenzTage();
         this.namenAusDatenbankImport2();
         this.namenLaden();
         this.differenzTage();
