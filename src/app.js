@@ -433,7 +433,7 @@ const LebensmittelApp = {
             const startStamp = startDateTime.getTime();
             let newDate = new Date();
             let newStamp = newDate.getTime();
-            let diff = Math.round((startStamp - newStamp) / 1000);
+            let diff = Math.round((newStamp - startStamp) / 1000);
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = "vor " + d + " Tagen";
             // console.log(lebensmittel.geoeffnetSeit);
