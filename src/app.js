@@ -1,5 +1,5 @@
 // console.error('sdgsgd');
-import { inDatenbankSchreiben, namenAusDatenbankLesen, namenAusDatenbankLesen2, getHttpFake, out, cloudNamen } from "./index.js";
+import { inDatenbankSchreiben, namenAusDatenbankLesen } from "./index.js";
 import { getDatabase, connectDatabaseEmulator, ref, child, get, onValue } from "firebase/database";
 
 const LebensmittelApp = {
@@ -12,7 +12,6 @@ const LebensmittelApp = {
                 name: '',
                 mhd: '',
                 geoeffnetSeit: '',
-
             },
 
             // --- Daten des neuen Namens --- 
@@ -374,6 +373,9 @@ const LebensmittelApp = {
             // Komplettes Array mit Lebensmittel und Namen im 'localStorage' speichern
             const text = JSON.stringify(this.namenList);
             localStorage.setItem('namenList', text);
+            // console.log('namenspeichern ende');
+            // console.log(text);
+            // console.log(this.namenList);
         },
 
         laden() {
@@ -397,9 +399,13 @@ const LebensmittelApp = {
                 this.namenList = JSON.parse(dataString);
             } else {
                 console.log('Namenslliste nicht vorhanden -> wird neu erstellt');
-                var namenList = [];
-                this.namenSpeichern();
-                console.log(namenList + 'Fertig');
+                var dataNamen = [{ "id": 2, "kategorie": "Milchprodukte", "name": "Milch" }, { "id": 3, "kategorie": "Milchprodukte", "name": "Käse" }, { "id": 4, "kategorie": "Milchprodukte", "name": "Butter" }, { "id": 5, "kategorie": "Milchprodukte", "name": "Jogurt" }, { "id": 6, "kategorie": "Obst", "name": "Banane" }, { "id": 7, "kategorie": "Obst", "name": "Apfel" }];
+                console.log(dataNamen);
+                console.log('namenladen');
+                const text = JSON.stringify(dataNamen);
+                localStorage.setItem('namenList', text);
+                let dataString = localStorage.getItem('namenList');
+                this.namenList = JSON.parse(dataString);
             }
         },
 
@@ -449,22 +455,21 @@ const LebensmittelApp = {
         },
 
 
-        namenAusDatenbankImport2() {
-            const dbRef = ref(getDatabase());
-            get(child(dbRef, `cloudNamenList`)).then((snapshot) => {
-                if (snapshot.exists()) {
-                    console.log(snapshot.val());
-                    cloudNamen = snapshot.val();
-                    const text = JSON.stringify(cloudNamen);
-                    localStorage.setItem('namenList', text);
-                    this.namenLaden();
-                } else {
-                    console.log("No data available");
-                }
-            }).catch((error) => {
-                console.error(error);
-            });
-        },
+        // namenAusDatenbankImport2() {
+        //     const dbRef = ref(getDatabase());
+        //     get(child(dbRef, `cloudNamenList`)).then((snapshot) => {
+        //         if (snapshot.exists()) {
+        //             console.log(snapshot.val());
+        //             const text = JSON.stringify(snapshot.val());
+        //             localStorage.setItem('namenList', text);
+        //             this.namenLaden();
+        //         } else {
+        //             console.log("No data available");
+        //         }
+        //     }).catch((error) => {
+        //         console.error(error);
+        //     });
+        // },
 
     },
 
@@ -472,7 +477,7 @@ const LebensmittelApp = {
         this.laden();
         inDatenbankSchreiben();
         // this.differenzTage();
-        this.namenAusDatenbankImport2();
+        // this.namenAusDatenbankImport2();
         this.namenLaden();
         this.differenzTage();
     },
