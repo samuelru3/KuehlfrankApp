@@ -8,17 +8,16 @@ const LebensmittelApp = {
         return {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
-                kategorie: 'Milchprodukte',
-                name: '',
+                kategorie: 'Konserven',
+                name: ' ',
                 mhd: '',
                 geoeffnetSeit: '',
             },
 
             // --- Daten des neuen Namens --- 
             newName: {
-                kategorie: 'Milchprodukte',
+                kategorie: '',
                 name: '',
-
             },
 
             laeuftAbInTagen: "",
@@ -137,14 +136,10 @@ const LebensmittelApp = {
     methods: {
         // ### Komponenten anzeigen und verstecken ###
         formularAnzeigen() {
-            // this.display.Statistik = false;
             this.display.Liste = false;
             this.display.Formular = true;
-            // this.display.Update = false;
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
-            // this.display.UpdateVonName = false;
-            // this.display.Anmeldung = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -211,11 +206,6 @@ const LebensmittelApp = {
                 mhd: this.newLebensmittel.mhd,
                 geoeffnetSeit: this.newLebensmittel.geoeffnetSeit,
                 kategorie: this.newLebensmittel.kategorie,
-                gender: this.newLebensmittel.gender,
-                donnerblitz: this.newLebensmittel.donnerblitz,
-                voltoball: this.newLebensmittel.voltoball,
-                surfer: this.newLebensmittel.surfer,
-                attacken: this.newLebensmittel.attackenliste // FEHLER!
             };
 
             // neues Lebensmittel an Liste anhängen
@@ -307,16 +297,17 @@ const LebensmittelApp = {
                     index = i;
                 }
             }
-            console.log('1');
             let aktuellerName = this.namenList[index];
-            console.log('2');
 
             // Daten vom Namen auf GUI übertragen
             this.updateName.id = aktuellerName.id;
-            console.log('3');
             this.updateName.name = aktuellerName.name;
             this.updateName.kategorie = aktuellerName.kategorie;
             this.aktuellerIndex = index;
+            console.log(this.updateName.id);
+            console.log(this.updateName.name);
+            console.log(this.updateName.kategorie);
+            console.log(this.aktuellerIndex);
 
             // GUI anzeigen
             this.updateNameAnzeigen();
@@ -418,20 +409,16 @@ const LebensmittelApp = {
         MHDDifferenzTage(lebensmittel) {
             const startDateTime = new Date(lebensmittel.mhd);
             const startStamp = startDateTime.getTime();
-
             let newDate = new Date();
             let newStamp = newDate.getTime();
             let diff = Math.round((startStamp - newStamp) / 1000);
-
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = "in " + d + " Tagen  "
-            // console.log(tage);
-            // console.log(lebensmittel.mhd);
-            this.laeuftAbInTagen = tage;
-            // console.log(this.laeuftAbInTagen);
-            // this.laeuftAbInTagen = lebensmittelList[id].name;
-            // console.log(laeuftAbInTagen);
-            return this.laeuftAbInTagen;
+            if (d + "" === "NaN") {
+                return null;
+            } else {
+                return tage
+            }
         },
 
         opendDifferenzTage(lebensmittel) {
@@ -442,16 +429,11 @@ const LebensmittelApp = {
             let diff = Math.round((newStamp - startStamp) / 1000);
             let d = Math.floor(diff / (24 * 60 * 60));
             let tage = "vor " + d + " Tagen";
-            // console.log(lebensmittel.geoeffnetSeit);
             if (d + "" === "NaN") {
-                // console.log('null');
                 return null;
             } else {
-                this.laeuftAbInTagen = tage;
-                // console.log(this.laeuftAbInTagen);
-                return this.laeuftAbInTagen;
+                return tage;
             }
-
         },
 
 
@@ -470,7 +452,6 @@ const LebensmittelApp = {
         //         console.error(error);
         //     });
         // },
-
     },
 
     mounted() {
