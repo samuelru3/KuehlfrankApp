@@ -8,7 +8,7 @@ const LebensmittelApp = {
         return {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
-                kategorie: 'Konserven',
+                kategorie: '',
                 name: ' ',
                 mhd: '',
                 geoeffnetSeit: '',
@@ -264,6 +264,7 @@ const LebensmittelApp = {
         buttonUpdate(id) {
             // Daten des Lebensmittel mit id holen
             let index = -1;
+            console.log('buttonUpdate');
             for (let i = 0; i < this.lebensmittelList.length; i++) {
                 if (this.lebensmittelList[i].id === id) {
                     index = i;
@@ -274,6 +275,7 @@ const LebensmittelApp = {
             // Daten vom Lebensmittel auf GUI übertragen
             this.updateLebensmittel.id = aktuellesLebensmittel.id;
             this.updateLebensmittel.name = aktuellesLebensmittel.name;
+            console.log(this.updateLebensmittel.name);
             this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
             this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
             this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
@@ -284,8 +286,10 @@ const LebensmittelApp = {
 
             this.aktuellerIndex = index;
 
+
             // GUI anzeigen
             this.updateAnzeigen();
+            console.log(this.updateLebensmittel.name);
         },
 
         buttonNameUpdate(id) {
