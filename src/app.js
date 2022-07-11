@@ -40,7 +40,7 @@ const LebensmittelApp = {
                 Formular: false,
                 Statistik: false,
                 Liste: true,         // Liste ist Standart (true):
-                Update: false,
+                Update: true,
                 UpdateVonName: false,
                 NeuerName: false,
                 ListeNamen: false,
@@ -275,21 +275,23 @@ const LebensmittelApp = {
             // Daten vom Lebensmittel auf GUI übertragen
             this.updateLebensmittel.id = aktuellesLebensmittel.id;
             this.updateLebensmittel.name = aktuellesLebensmittel.name;
-            console.log(this.updateLebensmittel.name);
+            console.log(aktuellesLebensmittel.name + '22');
             this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
             this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
             this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
-            this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
-            this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
-            this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
-            this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
+            // this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
+            // this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
+            // this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
+            // this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
 
             this.aktuellerIndex = index;
+
 
 
             // GUI anzeigen
             this.updateAnzeigen();
             console.log(this.updateLebensmittel.name);
+            console.log(this.updateLebensmittel);
         },
 
         buttonNameUpdate(id) {
@@ -374,6 +376,9 @@ const LebensmittelApp = {
         },
 
         laden() {
+
+            this.updateLebensmittel.name = 'Salat';
+
             // Daten aus 'localStorage' laden
             if (localStorage.getItem('lebensmittelliste') || false) {
                 let dataString = localStorage.getItem('lebensmittelliste');

@@ -271,8 +271,7 @@
           <!-- Name -->
           <label for="selectName" style="font-weight: bold;">Name:</label>
           <div class="input-group mb-3">
-            <select class="form-control" id="selectKategorie" v-model="updateLebensmittel.name"
-              style="padding-right:5px ;">
+            <select class="form-control" id="selectName" v-model="updateLebensmittel.name" style="padding-right:5px;">
               <option v-for="name in namenList" v-if="true">
                 {{ name.name }}</option>
             </select>
@@ -282,6 +281,7 @@
           <label for="selectMHD">MHD:</label>
           <input class="form-control" type="date" name="mhd" id="selectMHD" v-model="updateLebensmittel.mhd" required
             pattern="\d{4}-\d{2}-\d{2}">
+
           <!-- Geöffnet Seit -->
           <label for="selectGeoeffnetSeit">Geöffnet seit:</label>
           <input class="form-control" type="date" name="geoeffnetSeit" id="selectGeoeffnetSeit"
