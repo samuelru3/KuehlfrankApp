@@ -92,14 +92,9 @@
               <strong>{{ lebensmittel.name }}</strong>:
               <strong style="color:rgb(7, 34, 168); font-weight: 400;">{{ MHDDifferenzTage(lebensmittel) }}</strong>
               <strong style="color:rgb(210, 94, 26); font-weight: 400;">{{ opendDifferenzTage(lebensmittel) }}</strong>
-              <!-- {{ lebensmittel.geoeffnetSeit }}, -->
-              <!-- {{ lebensmittel.kategorie}} -->
             </span>
             <span>
-              <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)">
-                edit
-                <!-- <ion-icon name="pencil-outline"></ion-icon> -->
-              </button>
+              <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)"> edit </button>
               <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
           </li>
           <!-- Button Neues Lebensmittel Eintragen-->

@@ -40,7 +40,7 @@ const LebensmittelApp = {
                 Formular: false,
                 Statistik: false,
                 Liste: true,         // Liste ist Standart (true):
-                Update: true,
+                Update: false,
                 UpdateVonName: false,
                 NeuerName: false,
                 ListeNamen: false,
@@ -275,7 +275,6 @@ const LebensmittelApp = {
             // Daten vom Lebensmittel auf GUI übertragen
             this.updateLebensmittel.id = aktuellesLebensmittel.id;
             this.updateLebensmittel.name = aktuellesLebensmittel.name;
-            console.log(aktuellesLebensmittel.name + '22');
             this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
             this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
             this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
