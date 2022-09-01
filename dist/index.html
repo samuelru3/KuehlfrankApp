@@ -94,8 +94,9 @@
               <strong style="color:rgb(210, 94, 26); font-weight: 400;">{{ opendDifferenzTage(lebensmittel) }}</strong>
             </span>
             <span>
-              <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)"> edit </button>
-              <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button></span>
+              <!-- <button class="btn btn-secondary mr-2" @click="buttonUpdate(lebensmittel.id)"> edit </button> -->
+              <button class="btn btn-danger" @click="buttonLoeschen(lebensmittel.id)">x</button>
+            </span>
           </li>
           <!-- Button Neues Lebensmittel Eintragen-->
           <li class="list-group-item"><button @click="formularAnzeigen" class="btn btn-block btn-success">+
@@ -181,11 +182,12 @@
 
             </span>
             <span>
-              <button class="btn btn-secondary mr-2" @click="buttonNameUpdate(name.id)">
-                edit
-                <!-- <ion-icon name="pencil-outline"></ion-icon> -->
-              </button>
-              <button class="btn btn-danger" @click="buttonNameLoeschen(namenList.id)">x</button></span>
+              <!-- <button class="btn btn-secondary mr-2" @click="buttonNameUpdate(name.id)"> -->
+              <!-- edit -->
+              <!-- <ion-icon name="pencil-outline"></ion-icon> -->
+              <!-- </button> -->
+              <button class="btn btn-danger" @click="buttonNameLoeschen(namenList.id)">x</button>
+            </span>
             <!-- buttonLoeschen(lebensmittel.id) -->
           </li>
 
