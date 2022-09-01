@@ -59,8 +59,6 @@
     </div>
 
 
-    <!-- Altes ab hier -->
-
     <div id="kuehlfrank-app" class="container bg-success p-2">
 
       <div v-if="display.Header" class="bg-light rounded m-2 p-2 row">
@@ -71,6 +69,29 @@
         </button>
       </div>
 
+
+      <div v-if="display.Header" class="bg-light rounded m-2 p-2 row">
+        <h1 class="col" style="margin: 0px; padding-left: 0%;">{{ updateLebensmittel.name
+          }} {{ updateLebensmittel.mhd }} {{ updateLebensmittel.geoeffnetSeit }} {{ updateLebensmittel.kategorie }}</h1>
+      </div>
+      <input type="text" id="fname" name="fname" v-model="updateLebensmittel.name">
+
+      <label for="selectName" style="font-weight: bold;">Name:</label>
+      <div class="input-group mb-3">
+        <select class="form-control" id="selectName" v-model="updateLebensmittel.name" style="padding-right:5px;">
+          <option v-for="name in namenList" v-if="true">
+            {{ name.name }}</option>
+        </select>
+      </div>
+
+      <select class="form-control" id="selectTyp2" v-model="variableKathegorie">
+        <option>Feuer</option>
+        <option>Normal</option>
+        <option>Wasser</option>
+        <option>Gemüse</option>
+        <option>Pflanze</option>
+        <option>Eis</option>
+      </select>
 
       <!-- Statistik -->
       <div v-if="display.Statistik" class="bg-light rounded m-2 p-2">

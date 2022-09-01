@@ -9,7 +9,7 @@ const LebensmittelApp = {
             // --- Daten des neuen Lebensmittels --- 
             newLebensmittel: {
                 kategorie: '',
-                name: ' ',
+                name: '',
                 mhd: '',
                 geoeffnetSeit: '',
             },
@@ -48,7 +48,13 @@ const LebensmittelApp = {
                 Anmeldung: false,
             },
             // --- für Update
-            aktuellerIndex: -1
+            aktuellerIndex: -1,
+            // --- für Namen Update
+            aktuellerNamenIndex: -1,
+
+            // Variable für Test
+            variableKathegorie: 'Gemüse'
+
         }
     },
 
@@ -278,10 +284,6 @@ const LebensmittelApp = {
             this.updateLebensmittel.mhd = aktuellesLebensmittel.mhd;
             this.updateLebensmittel.geoeffnetSeit = aktuellesLebensmittel.geoeffnetSeit;
             this.updateLebensmittel.kategorie = aktuellesLebensmittel.kategorie;
-            // this.updateLebensmittel.gender = aktuellesLebensmittel.gender;
-            // this.updateLebensmittel.donnerblitz = aktuellesLebensmittel.donnerblitz;
-            // this.updateLebensmittel.voltoball = aktuellesLebensmittel.voltoball;
-            // this.updateLebensmittel.surfer = aktuellesLebensmittel.surfer;
 
             this.aktuellerIndex = index;
 
@@ -308,11 +310,12 @@ const LebensmittelApp = {
             this.updateName.id = aktuellerName.id;
             this.updateName.name = aktuellerName.name;
             this.updateName.kategorie = aktuellerName.kategorie;
-            this.aktuellerIndex = index;
+            this.aktuellerNamenIndex = index;
+            // this.aktuellerIndex = index;
             console.log(this.updateName.id);
             console.log(this.updateName.name);
             console.log(this.updateName.kategorie);
-            console.log(this.aktuellerIndex);
+            // console.log(this.aktuellerIndex);
 
             // GUI anzeigen
             this.updateNameAnzeigen();
