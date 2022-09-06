@@ -6,18 +6,18 @@ const LebensmittelApp = {
 
     data() {
         return {
-            // --- Daten des neuen Lebensmittels --- 
+            // --- Daten des neuen Lebensmittels ---
             newLebensmittel: {
-                kategorie: '',
-                name: ' ',
-                mhd: '',
-                geoeffnetSeit: '',
+                kategorie: "",
+                name: " ",
+                mhd: "",
+                geoeffnetSeit: "",
             },
 
-            // --- Daten des neuen Namens --- 
+            // --- Daten des neuen Namens ---
             newName: {
-                kategorie: '',
-                name: '',
+                kategorie: "",
+                name: "",
             },
 
             laeuftAbInTagen: "",
@@ -39,7 +39,7 @@ const LebensmittelApp = {
             display: {
                 Formular: false,
                 Statistik: false,
-                Liste: true,         // Liste ist Standart (true):
+                Liste: true, // Liste ist Standart (true):
                 Update: false,
                 UpdateVonName: false,
                 NeuerName: false,
@@ -49,8 +49,34 @@ const LebensmittelApp = {
                 AnmeldenButton: false,
             },
             // --- für Update
-            aktuellerIndex: -1
-        }
+            aktuellerIndex: -1,
+
+            dataNamen: [
+                { "id": 1, "name": "Tomatensoße(Glas)", "kategorie": "Konserven" },
+                { "id": 2, "name": "Pesto(Rot)", "kategorie": "Konserven" },
+                { "id": 3, "name": "Pesto(Grün)", "kategorie": "Konserven" },
+                { "id": 4, "name": "Marmelade", "kategorie": "Konserven" },
+                { "id": 5, "name": "Preiselbeermarmelade", "kategorie": "Konserven" },
+                { "id": 6, "name": "Sojasoße", "kategorie": "Konserven" },
+                { "id": 7, "name": "Ketchup", "kategorie": "Konserven" },
+                { "id": 8, "name": "Grillsoße", "kategorie": "Konserven" },
+                { "id": 9, "name": "Süß-Sauer-Soße", "kategorie": "Konserven" },
+                { "id": 10, "name": "Tiefkühlpizza", "kategorie": "Konserven" },
+                { "id": 11, "name": "Pudding", "kategorie": "Milchprodukte" },
+                { "id": 12, "name": "Butter", "kategorie": "Milchprodukte" },
+                { "id": 13, "name": "Käse(Scheiben)", "kategorie": "Milchprodukte" },
+                { "id": 14, "name": "Käse(Stück)", "kategorie": "Milchprodukte" },
+                { "id": 15, "name": "Käse(Gerieben)", "kategorie": "Milchprodukte" },
+                { "id": 16, "name": "Parmesan", "kategorie": "Milchprodukte" },
+                { "id": 17, "name": "Milch", "kategorie": "Milchprodukte" },
+                { "id": 18, "name": "Ei", "kategorie": "Milchprodukte" },
+                { "id": 19, "name": "Babybel", "kategorie": "Milchprodukte" },
+                { "id": 20, "name": "Sahne", "kategorie": "Milchprodukte" },
+                { "id": 21, "name": "Schmand", "kategorie": "Milchprodukte" },
+                { "id": 22, "name": "Toastbrot", "kategorie": "Sonstiges" },
+                { "id": 23, "name": "Brot", "kategorie": "Sonstiges" }
+            ],
+        };
     },
 
     computed: {
@@ -398,6 +424,13 @@ const LebensmittelApp = {
 
         },
 
+        nameBackupConfirmation() {
+            if (confirm("Soll die Namensliste wirklich zurückgesetzt werden?")) {
+                this.namenZurueksetzten();
+            } else {
+            }
+        },
+
         namenLaden() {
             // Daten aus 'localStorage' laden
             if (localStorage.getItem('namenList')) {
@@ -405,9 +438,8 @@ const LebensmittelApp = {
                 this.namenList = JSON.parse(dataString);
             } else {
                 console.log('Namenslliste nicht vorhanden -> wird neu erstellt');
-                var dataNamen = [{ "id": 2, "kategorie": "Milchprodukte", "name": "Milch" }, { "id": 3, "kategorie": "Milchprodukte", "name": "Käse" }, { "id": 4, "kategorie": "Milchprodukte", "name": "Butter" }, { "id": 5, "kategorie": "Milchprodukte", "name": "Jogurt" }, { "id": 6, "kategorie": "Obst", "name": "Banane" }, { "id": 7, "kategorie": "Obst", "name": "Apfel" }];
                 console.log(dataNamen);
-                console.log('namenladen');
+                console.log('Liste der Namen wurde erstellt');
                 const text = JSON.stringify(dataNamen);
                 localStorage.setItem('namenList', text);
                 let dataString = localStorage.getItem('namenList');
@@ -416,12 +448,9 @@ const LebensmittelApp = {
         },
 
         namenZurueksetzten() {
-            // Daten aus 'localStorage' laden
-            console.log('Namenslliste nicht vorhanden -> wird neu erstellt');
-            var dataNamen = [{ "id": 2, "kategorie": "Milchprodukte", "name": "Milch" }, { "id": 3, "kategorie": "Milchprodukte", "name": "Käse" }, { "id": 4, "kategorie": "Milchprodukte", "name": "Butter" }, { "id": 5, "kategorie": "Milchprodukte", "name": "Jogurt" }, { "id": 6, "kategorie": "Obst", "name": "Banane" }, { "id": 7, "kategorie": "Obst", "name": "Apfel" }];
-            console.log(dataNamen);
-            console.log('namenladen');
-            const text = JSON.stringify(dataNamen);
+            console.log(this.dataNamen);
+            console.log('Liste der Namen wurde zurückgesetzt!');
+            const text = JSON.stringify(this.dataNamen);
             localStorage.setItem('namenList', text);
             let dataString = localStorage.getItem('namenList');
             this.namenList = JSON.parse(dataString);

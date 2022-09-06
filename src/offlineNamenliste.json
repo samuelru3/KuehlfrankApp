@@ -1,0 +1,58 @@
+// [
+//   { "id": 0, "name": "Ananas", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Tomatensoße(Glas)", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Tomatensoße(Dose)", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Pesto(Rot)", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Pesto(Grün)", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Nutella", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Marmelade", "kategorie": "Konserven" },
+//   { "id": 1, "name": "", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" },
+//   { "id": 1, "name": "Mais", "kategorie": "Konserven" }
+// ]
+
+// Milchprodukte
+// Konserven
+// Gemüse
+// Obst
+// Teigwaren
+// Sonstiges
+
+[
+  { "id": 1, "name": "Tomatensoße(Glas)", "kategorie": "Konserven" },
+  { "id": 2, "name": "Pesto(Rot)", "kategorie": "Konserven" },
+  { "id": 3, "name": "Pesto(Grün)", "kategorie": "Konserven" },
+  { "id": 4, "name": "Marmelade", "kategorie": "Konserven" },
+  { "id": 5, "name": "Preiselbeermarmelade", "kategorie": "Konserven" },
+  { "id": 6, "name": "Sojasoße", "kategorie": "Konserven" },
+  { "id": 7, "name": "Ketchup", "kategorie": "Konserven" },
+  { "id": 8, "name": "Grillsoße", "kategorie": "Konserven" },
+  { "id": 9, "name": "Süß-Sauer-Soße", "kategorie": "Konserven" },
+  { "id": 10, "name": "Tiefkühlpizza", "kategorie": "Konserven" },
+  { "id": 11, "name": "Pudding", "kategorie": "Milchprodukte" },
+  { "id": 12, "name": "Butter", "kategorie": "Milchprodukte" },
+  { "id": 13, "name": "Käse(Scheiben)", "kategorie": "Milchprodukte" },
+  { "id": 14, "name": "Käse(Stück)", "kategorie": "Milchprodukte" },
+  { "id": 15, "name": "Käse(Gerieben)", "kategorie": "Milchprodukte" },
+  { "id": 16, "name": "Parmesan", "kategorie": "Milchprodukte" },
+  { "id": 17, "name": "Milch", "kategorie": "Milchprodukte" },
+  { "id": 18, "name": "Ei", "kategorie": "Milchprodukte" },
+  { "id": 19, "name": "Babybel", "kategorie": "Milchprodukte" },
+  { "id": 20, "name": "Sahne", "kategorie": "Milchprodukte" },
+  { "id": 21, "name": "Schmand", "kategorie": "Milchprodukte" },
+  { "id": 22, "name": "Toastbrot", "kategorie": "Sonstiges" },
+  { "id": 23, "name": "Brot", "kategorie": "Sonstiges" }
+]
