@@ -197,6 +197,8 @@ export function namenAusDatenbankLesen() {
   return cloudNamen;
 }
 
+showLoginForm();
+
 export var out;
 
 export function namenAusDatenbankLesen2() {
