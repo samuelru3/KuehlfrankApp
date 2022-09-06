@@ -191,20 +191,21 @@
             <!-- buttonLoeschen(lebensmittel.id) -->
           </li>
 
-
-          <!-- Button Neues Lebensmittel Eintragen-->
-          <!-- <li class="list-group-item"><button @click="nameHinzufuegenAnzeigen" class="btn btn-block btn-success">+ Neuer
-              Name</button></li> -->
-
           <div class="p-2 m-2 row">
+
             <button class="btn col btn-success" style="margin-right: 5px;" @click="nameHinzufuegenAnzeigen">
               + Neuer Name
             </button>
+
+            <button class="btn btn-warning" style="margin-right: 5px;" @click="namenZurueksetzten">
+              Zurücksetzten
+            </button>
+
             <button class="btn btn-dark" @click="formularAnzeigen">
               abbrechen
             </button>
-          </div>
 
+          </div>
 
         </ul>
       </div>

@@ -415,6 +415,18 @@ const LebensmittelApp = {
             }
         },
 
+        namenZurueksetzten() {
+            // Daten aus 'localStorage' laden
+            console.log('Namenslliste nicht vorhanden -> wird neu erstellt');
+            var dataNamen = [{ "id": 2, "kategorie": "Milchprodukte", "name": "Milch" }, { "id": 3, "kategorie": "Milchprodukte", "name": "Käse" }, { "id": 4, "kategorie": "Milchprodukte", "name": "Butter" }, { "id": 5, "kategorie": "Milchprodukte", "name": "Jogurt" }, { "id": 6, "kategorie": "Obst", "name": "Banane" }, { "id": 7, "kategorie": "Obst", "name": "Apfel" }];
+            console.log(dataNamen);
+            console.log('namenladen');
+            const text = JSON.stringify(dataNamen);
+            localStorage.setItem('namenList', text);
+            let dataString = localStorage.getItem('namenList');
+            this.namenList = JSON.parse(dataString);
+        },
+
         namenAusDatenbankImport() {
             // namenAusDatenbankLesen();
             // console.log(namenAusDatenbankLesen());
