@@ -45,7 +45,8 @@ const LebensmittelApp = {
                 NeuerName: false,
                 ListeNamen: false,
                 Header: true,
-                Anmeldung: true,
+                Anmeldung: false,
+                AnmeldenButton: false,
             },
             // --- für Update
             aktuellerIndex: -1
@@ -140,6 +141,7 @@ const LebensmittelApp = {
             this.display.Formular = true;
             this.display.NeuerName = false;
             this.display.ListeNamen = false;
+            this.AnmeldenButton = false;
         },
 
         statistikUndListeAnzeigen() {
@@ -151,6 +153,7 @@ const LebensmittelApp = {
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
             this.display.Anmeldung = false;
+            this.AnmeldenButton = false;
         },
 
         updateAnzeigen() {
@@ -162,6 +165,7 @@ const LebensmittelApp = {
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
             this.display.Anmeldung = false;
+            this.AnmeldenButton = false;
         },
 
         namenListeAnzeigen() {
@@ -173,6 +177,7 @@ const LebensmittelApp = {
             this.display.ListeNamen = true;
             this.display.UpdateVonName = false;
             this.display.Anmeldung = false;
+            this.AnmeldenButton = false;
         },
 
         nameHinzufuegenAnzeigen() {
@@ -184,6 +189,7 @@ const LebensmittelApp = {
             this.display.ListeNamen = false;
             this.display.UpdateVonName = false;
             this.display.Anmeldung = false;
+            this.AnmeldenButton = false;
         },
 
         updateNameAnzeigen() {
@@ -195,6 +201,7 @@ const LebensmittelApp = {
             this.display.ListeNamen = false;
             this.display.UpdateVonName = true;
             this.display.Anmeldung = false;
+            this.AnmeldenButton = false;
         },
 
         // ### Handler für Buttons ###
@@ -410,7 +417,7 @@ const LebensmittelApp = {
 
         namenAusDatenbankImport() {
             // namenAusDatenbankLesen();
-            console.log(namenAusDatenbankLesen());
+            // console.log(namenAusDatenbankLesen());
         },
 
 
@@ -464,7 +471,7 @@ const LebensmittelApp = {
 
     mounted() {
         this.laden();
-        inDatenbankSchreiben();
+        // inDatenbankSchreiben();
         // this.differenzTage();
         // this.namenAusDatenbankImport2();
         this.namenLaden();

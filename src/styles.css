@@ -72,12 +72,12 @@ input:focus { outline: none; }
 
 /* active */
 
-input:focus ~ label, input.used ~ label {
+/* input:focus ~ label, input.used ~ label {
 	top: -20px;
   transform: scale(.75); left: -2px;
-	/* font-size: 14px; */
+	font-size: 14px;
 	color: #4a89dc;
-}
+} */
 
 
 /* Underline */
@@ -130,10 +130,10 @@ input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
 
 /* Animations */
 
-@keyframes inputHighlighter {
+/* @keyframes inputHighlighter {
 	from { background: #4a89dc; }
 	to 	{ width: 0; background: transparent; }
-}
+} */
 
 
 /* Button */
